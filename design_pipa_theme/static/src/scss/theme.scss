@@ -1,0 +1,416 @@
+// =============================================================================
+// Design Pipa Theme — theme.scss
+// Fuentes: provisorias Google Fonts (Barlow Condensed, Inter, Dancing Script)
+// TODO: reemplazar por fuentes originales cuando Agus las confirme
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Google Fonts
+// -----------------------------------------------------------------------------
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Inter:wght@400;500;600&family=Dancing+Script:wght@600;700&display=swap');
+
+// -----------------------------------------------------------------------------
+// Variables
+// -----------------------------------------------------------------------------
+$dp-black:        #0a0a0a;
+$dp-white:        #ffffff;
+$dp-gray-light:   #f5f5f5;
+$dp-gray-mid:     #cccccc;
+$dp-accent:       #ffffff;   // TODO: confirmar color de acento con Agus
+
+$dp-font-title:   'Barlow Condensed', sans-serif;
+$dp-font-body:    'Inter', sans-serif;
+$dp-font-script:  'Dancing Script', cursive;
+
+// -----------------------------------------------------------------------------
+// Reset / base
+// -----------------------------------------------------------------------------
+.dp-landing {
+	font-family: $dp-font-body;
+	color: $dp-black;
+}
+
+// -----------------------------------------------------------------------------
+// Snippet: Hero
+// -----------------------------------------------------------------------------
+.dp-hero {
+	background-color: $dp-black;
+	color: $dp-white;
+	padding: 80px 0 60px;
+
+	.dp-hero__eyebrow {
+		font-family: $dp-font-body;
+		font-size: 13px;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: $dp-gray-mid;
+		margin-bottom: 24px;
+	}
+
+	.dp-hero__title {
+		font-family: $dp-font-title;
+		font-size: clamp(52px, 7vw, 96px);
+		font-weight: 800;
+		line-height: 1;
+		text-transform: uppercase;
+		margin-bottom: 32px;
+	}
+
+	.dp-hero__cta {
+		display: inline-block;
+		border: 1px solid $dp-white;
+		color: $dp-white;
+		font-family: $dp-font-body;
+		font-size: 13px;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		padding: 12px 28px;
+		text-decoration: none;
+		transition: background 0.2s, color 0.2s;
+
+		&:hover {
+			background: $dp-white;
+			color: $dp-black;
+		}
+	}
+}
+
+// -----------------------------------------------------------------------------
+// Snippet: Por qué Design Pipa
+// -----------------------------------------------------------------------------
+.dp-why {
+	padding: 80px 0;
+	background: $dp-white;
+
+	.dp-why__col-text {
+		padding-right: 40px;
+	}
+
+	.dp-why__label {
+		font-family: $dp-font-title;
+		font-size: 13px;
+		font-weight: 600;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		color: $dp-gray-mid;
+		margin-bottom: 16px;
+	}
+
+	.dp-why__title {
+		font-family: $dp-font-title;
+		font-size: clamp(32px, 4vw, 52px);
+		font-weight: 800;
+		text-transform: uppercase;
+		line-height: 1.05;
+		margin-bottom: 24px;
+	}
+
+	.dp-why__body {
+		font-size: 15px;
+		line-height: 1.7;
+		color: #444;
+		margin-bottom: 32px;
+	}
+
+	.dp-why__cta {
+		display: inline-block;
+		border: 1px solid $dp-black;
+		color: $dp-black;
+		font-size: 13px;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		padding: 12px 28px;
+		text-decoration: none;
+		transition: background 0.2s, color 0.2s;
+
+		&:hover {
+			background: $dp-black;
+			color: $dp-white;
+		}
+	}
+
+	.dp-why__image-wrap {
+		position: relative;
+
+		img {
+			width: 100%;
+			height: 480px;
+			object-fit: cover;
+		}
+
+		.dp-why__script {
+			position: absolute;
+			bottom: -20px;
+			right: -20px;
+			font-family: $dp-font-script;
+			font-size: 22px;
+			color: $dp-black;
+			line-height: 1.4;
+			max-width: 220px;
+			text-align: right;
+			pointer-events: none;
+		}
+	}
+}
+
+// -----------------------------------------------------------------------------
+// Snippet: Destaque (fondo negro — "Se você não está no Brasil")
+// -----------------------------------------------------------------------------
+.dp-highlight {
+	background: $dp-black;
+	color: $dp-white;
+	padding: 60px 0;
+
+	.dp-highlight__title {
+		font-family: $dp-font-title;
+		font-size: clamp(28px, 3.5vw, 44px);
+		font-weight: 800;
+		text-transform: uppercase;
+		margin-bottom: 16px;
+	}
+
+	.dp-highlight__body {
+		font-size: 15px;
+		line-height: 1.7;
+		color: $dp-gray-mid;
+		max-width: 520px;
+	}
+}
+
+// -----------------------------------------------------------------------------
+// Snippet: Servicios
+// -----------------------------------------------------------------------------
+.dp-services {
+	padding: 80px 0;
+	background: $dp-white;
+
+	.dp-services__header {
+		margin-bottom: 48px;
+	}
+
+	.dp-services__label {
+		font-family: $dp-font-title;
+		font-size: 13px;
+		font-weight: 600;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		color: $dp-gray-mid;
+		margin-bottom: 12px;
+	}
+
+	.dp-services__title {
+		font-family: $dp-font-title;
+		font-size: clamp(28px, 3.5vw, 48px);
+		font-weight: 800;
+		text-transform: uppercase;
+	}
+
+	.dp-services__subtitle {
+		font-family: $dp-font-script;
+		font-size: 20px;
+		color: #666;
+		margin-top: 8px;
+	}
+
+	.dp-services__list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+
+		li {
+			font-family: $dp-font-title;
+			font-size: clamp(18px, 2vw, 24px);
+			font-weight: 700;
+			text-transform: lowercase;
+			padding: 8px 0;
+			border-bottom: 1px solid $dp-gray-light;
+			letter-spacing: 0.02em;
+
+			&:last-child {
+				border-bottom: none;
+			}
+		}
+	}
+
+	.dp-services__image {
+		width: 100%;
+		height: 500px;
+		object-fit: cover;
+	}
+}
+
+// -----------------------------------------------------------------------------
+// Snippet: Grid portafolio
+// -----------------------------------------------------------------------------
+.dp-portfolio {
+	padding: 48px 0;
+	background: $dp-gray-light;
+
+	.dp-portfolio__grid {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 8px;
+
+		@media (max-width: 768px) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	.dp-portfolio__item {
+		aspect-ratio: 1 / 1;
+		overflow: hidden;
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			transition: transform 0.4s ease;
+
+			&:hover {
+				transform: scale(1.04);
+			}
+		}
+	}
+}
+
+// -----------------------------------------------------------------------------
+// Snippet: Producción Gráfica
+// -----------------------------------------------------------------------------
+.dp-print {
+	background: $dp-black;
+	color: $dp-white;
+	padding: 80px 0;
+
+	.dp-print__title {
+		font-family: $dp-font-title;
+		font-size: clamp(40px, 6vw, 80px);
+		font-weight: 800;
+		text-transform: uppercase;
+		line-height: 1;
+		margin-bottom: 8px;
+
+		span {
+			display: block;
+			font-size: clamp(20px, 3vw, 40px);
+			font-weight: 400;
+			text-transform: none;
+		}
+	}
+
+	.dp-print__sub {
+		font-size: 14px;
+		color: $dp-gray-mid;
+		margin-bottom: 32px;
+	}
+
+	.dp-print__script {
+		font-family: $dp-font-script;
+		font-size: 26px;
+		color: $dp-gray-mid;
+		margin-top: 32px;
+	}
+
+	.dp-print__cta {
+		display: inline-block;
+		border: 1px solid $dp-white;
+		color: $dp-white;
+		font-size: 13px;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		padding: 12px 28px;
+		text-decoration: none;
+		transition: background 0.2s, color 0.2s;
+
+		&:hover {
+			background: $dp-white;
+			color: $dp-black;
+		}
+	}
+
+	.dp-print__list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		columns: 2;
+
+		li {
+			font-family: $dp-font-body;
+			font-size: 15px;
+			padding: 4px 0;
+			color: $dp-gray-mid;
+		}
+	}
+}
+
+// -----------------------------------------------------------------------------
+// Snippet: Brand Manager (CTA final)
+// -----------------------------------------------------------------------------
+.dp-brand-manager {
+	padding: 100px 0;
+	background-size: cover;
+	background-position: center;
+	position: relative;
+	text-align: center;
+
+	// overlay oscuro sobre la imagen de fondo
+	&::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: rgba($dp-black, 0.65);
+	}
+
+	> * {
+		position: relative;
+		z-index: 1;
+	}
+
+	.dp-brand-manager__eyebrow {
+		font-family: $dp-font-title;
+		font-size: 13px;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		color: $dp-gray-mid;
+		margin-bottom: 16px;
+	}
+
+	.dp-brand-manager__title {
+		font-family: $dp-font-title;
+		font-size: clamp(36px, 5vw, 72px);
+		font-weight: 800;
+		text-transform: uppercase;
+		color: $dp-white;
+		margin-bottom: 8px;
+	}
+
+	.dp-brand-manager__subtitle {
+		font-family: $dp-font-body;
+		font-size: 16px;
+		color: $dp-gray-mid;
+		margin-bottom: 40px;
+	}
+
+	.dp-brand-manager__script {
+		font-family: $dp-font-script;
+		font-size: 22px;
+		color: $dp-gray-mid;
+		margin-top: 32px;
+	}
+
+	.dp-brand-manager__cta {
+		display: inline-block;
+		background: $dp-white;
+		color: $dp-black;
+		font-size: 13px;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		padding: 16px 40px;
+		text-decoration: none;
+		font-weight: 600;
+		transition: background 0.2s, color 0.2s;
+
+		&:hover {
+			background: $dp-gray-mid;
+		}
+	}
+}
