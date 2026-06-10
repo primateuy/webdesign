@@ -2,30 +2,68 @@
 <odoo>
 
     <!-- =====================================================================
-         CATEGORÍA DE SNIPPETS EN EL BUILDER
-         Agrupa todos los bloques de Design Pipa en una sección propia
-         dentro del panel lateral del Website Builder.
+         CATEGORÍA DE SNIPPETS EN EL BUILDER — v19
+         En Odoo 19 el panel usa <snippets id="snippet_groups"> para registrar
+         el grupo y <snippets id="snippet_structure"> para los snippets,
+         con atributo group="design_pipa" para asociarlos.
+         Ref: https://www.odoo.com/documentation/19.0/developer/howtos/website_themes/building_blocks.html
     ====================================================================== -->
     <template id="snippets" inherit_id="website.snippets" name="Design Pipa — Snippets">
-        <xpath expr="//div[@id='snippet_structure']/div[hasclass('o_panel_body')]" position="before">
-            <div class="o_panel_header">Design Pipa</div>
-            <div class="o_panel_body">
-                <t t-snippet="design_pipa_theme.dp_snippet_hero"
-                   t-thumbnail="/design_pipa_theme/static/src/img/thumb_hero.png"/>
-                <t t-snippet="design_pipa_theme.dp_snippet_why"
-                   t-thumbnail="/design_pipa_theme/static/src/img/thumb_why.png"/>
-                <t t-snippet="design_pipa_theme.dp_snippet_highlight"
-                   t-thumbnail="/design_pipa_theme/static/src/img/thumb_highlight.png"/>
-                <t t-snippet="design_pipa_theme.dp_snippet_services"
-                   t-thumbnail="/design_pipa_theme/static/src/img/thumb_services.png"/>
-                <t t-snippet="design_pipa_theme.dp_snippet_portfolio"
-                   t-thumbnail="/design_pipa_theme/static/src/img/thumb_portfolio.png"/>
-                <t t-snippet="design_pipa_theme.dp_snippet_print"
-                   t-thumbnail="/design_pipa_theme/static/src/img/thumb_print.png"/>
-                <t t-snippet="design_pipa_theme.dp_snippet_brand_manager"
-                   t-thumbnail="/design_pipa_theme/static/src/img/thumb_brand_manager.png"/>
-            </div>
+
+        <!-- 1. Registrar el grupo "Design Pipa" en el panel lateral -->
+        <xpath expr="//snippets[@id='snippet_groups']/*[1]" position="before">
+            <t snippet-group="design_pipa"
+               t-snippet="website.s_snippet_group"
+               string="Design Pipa"
+               t-thumbnail="/design_pipa_theme/static/src/img/thumb_hero.png"/>
         </xpath>
+
+        <!-- 2. Registrar cada snippet asociado al grupo -->
+        <xpath expr="//snippets[@id='snippet_structure']/*[1]" position="before">
+            <t t-snippet="design_pipa_theme.dp_snippet_hero"
+               string="DP — Hero"
+               group="design_pipa"
+               t-thumbnail="/design_pipa_theme/static/src/img/thumb_hero.png">
+                <keywords>Hero portada</keywords>
+            </t>
+            <t t-snippet="design_pipa_theme.dp_snippet_why"
+               string="DP — Por qué Design Pipa"
+               group="design_pipa"
+               t-thumbnail="/design_pipa_theme/static/src/img/thumb_why.png">
+                <keywords>Por qué about</keywords>
+            </t>
+            <t t-snippet="design_pipa_theme.dp_snippet_highlight"
+               string="DP — Destaque Internacional"
+               group="design_pipa"
+               t-thumbnail="/design_pipa_theme/static/src/img/thumb_highlight.png">
+                <keywords>Destaque internacional</keywords>
+            </t>
+            <t t-snippet="design_pipa_theme.dp_snippet_services"
+               string="DP — Servicios"
+               group="design_pipa"
+               t-thumbnail="/design_pipa_theme/static/src/img/thumb_services.png">
+                <keywords>Servicios catálogo</keywords>
+            </t>
+            <t t-snippet="design_pipa_theme.dp_snippet_portfolio"
+               string="DP — Portafolio Grid"
+               group="design_pipa"
+               t-thumbnail="/design_pipa_theme/static/src/img/thumb_portfolio.png">
+                <keywords>Portafolio galería grid</keywords>
+            </t>
+            <t t-snippet="design_pipa_theme.dp_snippet_print"
+               string="DP — Producción Gráfica"
+               group="design_pipa"
+               t-thumbnail="/design_pipa_theme/static/src/img/thumb_print.png">
+                <keywords>Producción gráfica impresión</keywords>
+            </t>
+            <t t-snippet="design_pipa_theme.dp_snippet_brand_manager"
+               string="DP — Brand Manager"
+               group="design_pipa"
+               t-thumbnail="/design_pipa_theme/static/src/img/thumb_brand_manager.png">
+                <keywords>Brand manager CTA</keywords>
+            </t>
+        </xpath>
+
     </template>
 
     <!-- =====================================================================
