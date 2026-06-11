@@ -1,450 +1,474 @@
 // =============================================================================
 // Design Pipa Theme — theme.scss
-// IMPORTANTE: todo el CSS está encapsulado dentro de .dp-page para no
-// interferir con el tema base ni con otras páginas del sitio.
-// Fuentes provisorias Google Fonts — reemplazar cuando Agus confirme.
-// TODO [001]: reemplazar fuentes por las originales de Design Pipa
+// Fuente manuscrita: Signaturae (local, incluida en el módulo)
+// Títulos: Barlow Condensed (Google Fonts, provisional)
+// Cuerpo: Inter (Google Fonts, provisional)
+// TODO [001]: confirmar con Agus si tiene licencia comercial de Signaturae
+// TODO [002]: confirmar fuentes originales de títulos y cuerpo
 // =============================================================================
 
-// Variables — solo disponibles dentro de este archivo
+// Fuente manuscrita local
+@font-face {
+	font-family: 'Signaturae';
+	src: url('/design_pipa_theme/static/src/fonts/Signaturae.otf') format('opentype'),
+	     url('/design_pipa_theme/static/src/fonts/Signaturae.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+// Variables
 $dp-black:       #0a0a0a;
 $dp-white:       #ffffff;
 $dp-gray-light:  #f5f5f5;
 $dp-gray-mid:    #cccccc;
 $dp-font-title:  'Barlow Condensed', sans-serif;
 $dp-font-body:   'Inter', sans-serif;
-$dp-font-script: 'Dancing Script', cursive;
+$dp-font-script: 'Signaturae', cursive;
 
 // =============================================================================
-// Todo el CSS encapsulado dentro de .dp-page
-// Nada de lo que sigue afecta páginas fuera de /design-pipa
+// Todo encapsulado en .dp-page — no afecta otras páginas del sitio
 // =============================================================================
 .dp-page {
 
-    font-family: $dp-font-body;
+	// -------------------------------------------------------------------------
+	// Nav interna sticky
+	// -------------------------------------------------------------------------
+	.dp-subnav {
+		position: sticky;
+		top: 0;
+		z-index: 1000;
+		background: $dp-black;
+		border-bottom: 1px solid #222;
 
-    // -------------------------------------------------------------------------
-    // Nav interna fija
-    // -------------------------------------------------------------------------
-    .dp-subnav {
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        background: $dp-black;
-        border-bottom: 1px solid #222;
+		.dp-subnav__inner {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 0 24px;
+			display: flex;
+			gap: 32px;
+			align-items: center;
+			height: 52px;
+		}
 
-        .dp-subnav__inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-            display: flex;
-            gap: 32px;
-            align-items: center;
-            height: 52px;
-        }
+		a {
+			color: $dp-gray-mid !important;
+			font-family: $dp-font-body;
+			font-size: 13px;
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+			text-decoration: none !important;
+			transition: color 0.2s;
 
-        a {
-            color: $dp-gray-mid;
-            font-family: $dp-font-body;
-            font-size: 13px;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            text-decoration: none;
-            transition: color 0.2s;
+			&:hover {
+				color: $dp-white !important;
+			}
+		}
+	}
 
-            &:hover {
-                color: $dp-white;
-                text-decoration: none;
-            }
-        }
-    }
+	// -------------------------------------------------------------------------
+	// Hero
+	// -------------------------------------------------------------------------
+	.dp-hero {
+		background-color: $dp-black;
+		color: $dp-white;
+		padding: 80px 0 60px;
 
-    // -------------------------------------------------------------------------
-    // Scroll suave para las anclas
-    // -------------------------------------------------------------------------
+		.dp-hero__eyebrow {
+			font-family: $dp-font-body;
+			font-size: 13px;
+			letter-spacing: 0.12em;
+			text-transform: uppercase;
+			color: $dp-gray-mid;
+			margin-bottom: 24px;
+		}
 
-    // -------------------------------------------------------------------------
-    // Hero
-    // -------------------------------------------------------------------------
-    .dp-hero {
-        background-color: $dp-black;
-        color: $dp-white;
-        padding: 80px 0 60px;
+		.dp-hero__title {
+			font-family: $dp-font-title;
+			font-size: clamp(52px, 7vw, 96px);
+			font-weight: 800 !important;
+			line-height: 1;
+			text-transform: uppercase;
+			margin-bottom: 32px;
+			color: $dp-white !important;
+		}
 
-        .dp-hero__eyebrow {
-            font-size: 13px;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: $dp-gray-mid;
-            margin-bottom: 24px;
-        }
+		.dp-hero__cta {
+			display: inline-block;
+			border: 1px solid $dp-white;
+			color: $dp-white !important;
+			font-family: $dp-font-body;
+			font-size: 13px;
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+			padding: 12px 28px;
+			text-decoration: none !important;
+			transition: background 0.2s, color 0.2s;
 
-        .dp-hero__title {
-            font-family: $dp-font-title;
-            font-size: clamp(52px, 7vw, 96px);
-            font-weight: 800;
-            line-height: 1;
-            text-transform: uppercase;
-            margin-bottom: 32px;
-            color: $dp-white;
-        }
+			&:hover {
+				background: $dp-white;
+				color: $dp-black !important;
+			}
+		}
+	}
 
-        .dp-hero__cta {
-            display: inline-block;
-            border: 1px solid $dp-white;
-            color: $dp-white;
-            font-size: 13px;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            padding: 12px 28px;
-            text-decoration: none;
-            transition: background 0.2s, color 0.2s;
+	// -------------------------------------------------------------------------
+	// Por qué Design Pipa
+	// -------------------------------------------------------------------------
+	.dp-why {
+		padding: 80px 0;
+		background: $dp-white;
+		overflow: hidden;
 
-            &:hover {
-                background: $dp-white;
-                color: $dp-black;
-                text-decoration: none;
-            }
-        }
-    }
+		.dp-why__col-text {
+			padding-right: 40px;
+		}
 
-    // -------------------------------------------------------------------------
-    // Por qué Design Pipa
-    // -------------------------------------------------------------------------
-    .dp-why {
-        padding: 80px 0;
-        background: $dp-white;
+		.dp-why__label {
+			font-family: $dp-font-body;
+			font-size: 12px;
+			font-weight: 600 !important;
+			letter-spacing: 0.15em;
+			text-transform: uppercase;
+			color: $dp-gray-mid;
+			margin-bottom: 16px;
+		}
 
-        .dp-why__col-text {
-            padding-right: 40px;
-        }
+		.dp-why__title {
+			font-family: $dp-font-title;
+			font-size: clamp(32px, 4vw, 52px);
+			font-weight: 800 !important;
+			text-transform: uppercase;
+			line-height: 1.05;
+			margin-bottom: 24px;
+			color: $dp-black !important;
+		}
 
-        .dp-why__label {
-            font-family: $dp-font-title;
-            font-size: 13px;
-            font-weight: 600;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: $dp-gray-mid;
-            margin-bottom: 16px;
-        }
+		.dp-why__body {
+			font-family: $dp-font-body;
+			font-size: 15px;
+			line-height: 1.7;
+			color: #444;
+			margin-bottom: 32px;
+		}
 
-        .dp-why__title {
-            font-family: $dp-font-title;
-            font-size: clamp(32px, 4vw, 52px);
-            font-weight: 800;
-            text-transform: uppercase;
-            line-height: 1.05;
-            margin-bottom: 24px;
-            color: $dp-black;
-        }
+		.dp-why__cta {
+			display: inline-block;
+			border: 1px solid $dp-black;
+			color: $dp-black !important;
+			font-family: $dp-font-body;
+			font-size: 13px;
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+			padding: 12px 28px;
+			text-decoration: none !important;
+			transition: background 0.2s, color 0.2s;
 
-        .dp-why__body {
-            font-size: 15px;
-            line-height: 1.7;
-            color: #444;
-            margin-bottom: 32px;
-        }
+			&:hover {
+				background: $dp-black;
+				color: $dp-white !important;
+			}
+		}
 
-        .dp-why__cta {
-            display: inline-block;
-            border: 1px solid $dp-black;
-            color: $dp-black;
-            font-size: 13px;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            padding: 12px 28px;
-            text-decoration: none;
-            transition: background 0.2s, color 0.2s;
+		.dp-why__image-wrap {
+			position: relative;
+			overflow: visible;
 
-            &:hover {
-                background: $dp-black;
-                color: $dp-white;
-                text-decoration: none;
-            }
-        }
+			img {
+				width: 100%;
+				height: 480px;
+				object-fit: cover;
+				display: block;
+			}
 
-        .dp-why__image-wrap {
-            position: relative;
+			// Cita manuscrita: posicionada sobre la imagen, contenida
+			.dp-why__script {
+				position: absolute;
+				bottom: 16px;
+				right: 16px;
+				font-family: $dp-font-script;
+				font-size: 28px;
+				color: $dp-white;
+				line-height: 1.3;
+				max-width: 260px;
+				text-align: right;
+				pointer-events: none;
+				// sombra para legibilidad sobre la imagen
+				text-shadow: 1px 1px 6px rgba(0,0,0,0.7);
+			}
+		}
+	}
 
-            img {
-                width: 100%;
-                height: 480px;
-                object-fit: cover;
-            }
+	// -------------------------------------------------------------------------
+	// Destaque Internacional
+	// -------------------------------------------------------------------------
+	.dp-highlight {
+		background: $dp-black;
+		color: $dp-white;
+		padding: 60px 0;
 
-            .dp-why__script {
-                position: absolute;
-                bottom: -20px;
-                right: -20px;
-                font-family: $dp-font-script;
-                font-size: 22px;
-                color: $dp-black;
-                line-height: 1.4;
-                max-width: 220px;
-                text-align: right;
-                pointer-events: none;
-            }
-        }
-    }
+		.dp-highlight__title {
+			font-family: $dp-font-title;
+			font-size: clamp(28px, 3.5vw, 44px);
+			font-weight: 800 !important;
+			text-transform: uppercase;
+			margin-bottom: 16px;
+			color: $dp-white !important;
+		}
 
-    // -------------------------------------------------------------------------
-    // Destaque Internacional
-    // -------------------------------------------------------------------------
-    .dp-highlight {
-        background: $dp-black;
-        color: $dp-white;
-        padding: 60px 0;
+		.dp-highlight__body {
+			font-family: $dp-font-body;
+			font-size: 15px;
+			line-height: 1.7;
+			color: $dp-gray-mid;
+			max-width: 520px;
+			margin: 0 auto;
+		}
+	}
 
-        .dp-highlight__title {
-            font-family: $dp-font-title;
-            font-size: clamp(28px, 3.5vw, 44px);
-            font-weight: 800;
-            text-transform: uppercase;
-            margin-bottom: 16px;
-            color: $dp-white;
-        }
+	// -------------------------------------------------------------------------
+	// Servicios
+	// -------------------------------------------------------------------------
+	.dp-services {
+		padding: 80px 0;
+		background: $dp-white;
 
-        .dp-highlight__body {
-            font-size: 15px;
-            line-height: 1.7;
-            color: $dp-gray-mid;
-            max-width: 520px;
-            margin: 0 auto;
-        }
-    }
+		.dp-services__header {
+			margin-bottom: 48px;
+		}
 
-    // -------------------------------------------------------------------------
-    // Servicios
-    // -------------------------------------------------------------------------
-    .dp-services {
-        padding: 80px 0;
-        background: $dp-white;
+		.dp-services__label {
+			font-family: $dp-font-body;
+			font-size: 12px;
+			font-weight: 600 !important;
+			letter-spacing: 0.15em;
+			text-transform: uppercase;
+			color: $dp-gray-mid;
+			margin-bottom: 12px;
+		}
 
-        .dp-services__header {
-            margin-bottom: 48px;
-        }
+		.dp-services__title {
+			font-family: $dp-font-title;
+			font-size: clamp(28px, 3.5vw, 48px);
+			font-weight: 800 !important;
+			text-transform: uppercase;
+			color: $dp-black !important;
+		}
 
-        .dp-services__label {
-            font-family: $dp-font-title;
-            font-size: 13px;
-            font-weight: 600;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: $dp-gray-mid;
-            margin-bottom: 12px;
-        }
+		.dp-services__subtitle {
+			font-family: $dp-font-script;
+			font-size: 28px;
+			color: #666;
+			margin-top: 4px;
+			font-weight: normal !important;
+		}
 
-        .dp-services__title {
-            font-family: $dp-font-title;
-            font-size: clamp(28px, 3.5vw, 48px);
-            font-weight: 800;
-            text-transform: uppercase;
-            color: $dp-black;
-        }
+		.dp-services__list {
+			list-style: none !important;
+			padding: 0 !important;
+			margin: 0 !important;
 
-        .dp-services__subtitle {
-            font-family: $dp-font-script;
-            font-size: 20px;
-            color: #666;
-            margin-top: 8px;
-        }
+			li {
+				font-family: $dp-font-title;
+				font-size: clamp(20px, 2.2vw, 28px);
+				font-weight: 700 !important;
+				text-transform: lowercase;
+				padding: 10px 0;
+				border-bottom: 1px solid $dp-gray-light;
+				letter-spacing: 0.02em;
+				color: $dp-black !important;
 
-        .dp-services__list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+				&:last-child { border-bottom: none; }
 
-            li {
-                font-family: $dp-font-title;
-                font-size: clamp(18px, 2vw, 24px);
-                font-weight: 700;
-                text-transform: lowercase;
-                padding: 8px 0;
-                border-bottom: 1px solid $dp-gray-light;
-                letter-spacing: 0.02em;
-                color: $dp-black;
+				// resetear cualquier bullet del tema base
+				&::before { content: none !important; }
+			}
+		}
 
-                &:last-child { border-bottom: none; }
-            }
-        }
+		.dp-services__image {
+			width: 100%;
+			height: 500px;
+			object-fit: cover;
+		}
+	}
 
-        .dp-services__image {
-            width: 100%;
-            height: 500px;
-            object-fit: cover;
-        }
-    }
+	// -------------------------------------------------------------------------
+	// Portfolio grid
+	// -------------------------------------------------------------------------
+	.dp-portfolio {
+		background: $dp-black;
 
-    // -------------------------------------------------------------------------
-    // Portfolio grid
-    // -------------------------------------------------------------------------
-    .dp-portfolio {
-        padding: 8px 0;
-        background: $dp-gray-light;
+		.dp-portfolio__grid {
+			display: grid;
+			grid-template-columns: repeat(4, 1fr);
+			gap: 4px;
 
-        .dp-portfolio__grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 8px;
+			@media (max-width: 768px) {
+				grid-template-columns: repeat(2, 1fr);
+			}
+		}
 
-            @media (max-width: 768px) {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
+		.dp-portfolio__item {
+			aspect-ratio: 1 / 1;
+			overflow: hidden;
 
-        .dp-portfolio__item {
-            aspect-ratio: 1 / 1;
-            overflow: hidden;
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				display: block;
+				transition: transform 0.4s ease;
 
-            img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                transition: transform 0.4s ease;
+				&:hover { transform: scale(1.04); }
+			}
+		}
+	}
 
-                &:hover { transform: scale(1.04); }
-            }
-        }
-    }
+	// -------------------------------------------------------------------------
+	// Producción Gráfica
+	// -------------------------------------------------------------------------
+	.dp-print {
+		background: $dp-black;
+		color: $dp-white;
+		padding: 80px 0;
 
-    // -------------------------------------------------------------------------
-    // Producción Gráfica
-    // -------------------------------------------------------------------------
-    .dp-print {
-        background: $dp-black;
-        color: $dp-white;
-        padding: 80px 0;
+		.dp-print__title {
+			font-family: $dp-font-title;
+			font-weight: 800 !important;
+			text-transform: uppercase;
+			line-height: 1;
+			margin-bottom: 8px;
+			color: $dp-white !important;
 
-        .dp-print__title {
-            font-family: $dp-font-title;
-            font-size: clamp(40px, 6vw, 80px);
-            font-weight: 800;
-            text-transform: uppercase;
-            line-height: 1;
-            margin-bottom: 8px;
-            color: $dp-white;
+			span {
+				display: block;
+				font-size: clamp(20px, 3vw, 36px);
+				font-weight: 400 !important;
+				text-transform: none;
+				font-family: $dp-font-body;
+			}
 
-            span {
-                display: block;
-                font-size: clamp(20px, 3vw, 40px);
-                font-weight: 400;
-                text-transform: none;
-            }
-        }
+			// el GRÁFICA grande
+			font-size: clamp(48px, 7vw, 96px);
+		}
 
-        .dp-print__sub {
-            font-size: 14px;
-            color: $dp-gray-mid;
-            margin-bottom: 32px;
-        }
+		.dp-print__sub {
+			font-family: $dp-font-body;
+			font-size: 14px;
+			color: $dp-gray-mid;
+			margin-bottom: 32px;
+		}
 
-        .dp-print__script {
-            font-family: $dp-font-script;
-            font-size: 26px;
-            color: $dp-gray-mid;
-            margin-top: 32px;
-        }
+		.dp-print__script {
+			font-family: $dp-font-script;
+			font-size: 32px;
+			color: $dp-gray-mid;
+			margin-top: 32px;
+			font-weight: normal !important;
+		}
 
-        .dp-print__cta {
-            display: inline-block;
-            border: 1px solid $dp-white;
-            color: $dp-white;
-            font-size: 13px;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            padding: 12px 28px;
-            text-decoration: none;
-            transition: background 0.2s, color 0.2s;
+		.dp-print__cta {
+			display: inline-block;
+			border: 1px solid $dp-white;
+			color: $dp-white !important;
+			font-family: $dp-font-body;
+			font-size: 13px;
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+			padding: 12px 28px;
+			text-decoration: none !important;
+			transition: background 0.2s, color 0.2s;
 
-            &:hover {
-                background: $dp-white;
-                color: $dp-black;
-                text-decoration: none;
-            }
-        }
+			&:hover {
+				background: $dp-white;
+				color: $dp-black !important;
+			}
+		}
 
-        .dp-print__list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            columns: 2;
+		.dp-print__list {
+			list-style: none !important;
+			padding: 0 !important;
+			margin: 0 !important;
+			columns: 2;
 
-            li {
-                font-size: 15px;
-                padding: 4px 0;
-                color: $dp-gray-mid;
-            }
-        }
-    }
+			li {
+				font-family: $dp-font-body;
+				font-size: 15px;
+				padding: 5px 0;
+				color: $dp-gray-mid;
 
-    // -------------------------------------------------------------------------
-    // Brand Manager
-    // -------------------------------------------------------------------------
-    .dp-brand-manager {
-        padding: 100px 0;
-        background-size: cover;
-        background-position: center;
-        position: relative;
-        text-align: center;
+				&::before { content: none !important; }
+			}
+		}
+	}
 
-        &::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: rgba($dp-black, 0.65);
-        }
+	// -------------------------------------------------------------------------
+	// Brand Manager
+	// -------------------------------------------------------------------------
+	.dp-brand-manager {
+		padding: 100px 0;
+		background-size: cover;
+		background-position: center;
+		position: relative;
+		text-align: center;
 
-        > .container { position: relative; z-index: 1; }
+		&::before {
+			content: '';
+			position: absolute;
+			inset: 0;
+			background: rgba($dp-black, 0.65);
+		}
 
-        .dp-brand-manager__eyebrow {
-            font-family: $dp-font-title;
-            font-size: 13px;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: $dp-gray-mid;
-            margin-bottom: 16px;
-        }
+		> .container { position: relative; z-index: 1; }
 
-        .dp-brand-manager__title {
-            font-family: $dp-font-title;
-            font-size: clamp(36px, 5vw, 72px);
-            font-weight: 800;
-            text-transform: uppercase;
-            color: $dp-white;
-            margin-bottom: 8px;
-        }
+		.dp-brand-manager__eyebrow {
+			font-family: $dp-font-body;
+			font-size: 13px;
+			letter-spacing: 0.15em;
+			text-transform: uppercase;
+			color: $dp-gray-mid;
+			margin-bottom: 16px;
+		}
 
-        .dp-brand-manager__subtitle {
-            font-size: 16px;
-            color: $dp-gray-mid;
-            margin-bottom: 40px;
-        }
+		.dp-brand-manager__title {
+			font-family: $dp-font-title;
+			font-size: clamp(36px, 5vw, 72px);
+			font-weight: 800 !important;
+			text-transform: uppercase;
+			color: $dp-white !important;
+			margin-bottom: 8px;
+		}
 
-        .dp-brand-manager__script {
-            font-family: $dp-font-script;
-            font-size: 22px;
-            color: $dp-gray-mid;
-            margin-top: 32px;
-        }
+		.dp-brand-manager__subtitle {
+			font-family: $dp-font-body;
+			font-size: 16px;
+			color: $dp-gray-mid;
+			margin-bottom: 40px;
+		}
 
-        .dp-brand-manager__cta {
-            display: inline-block;
-            background: $dp-white;
-            color: $dp-black;
-            font-size: 13px;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            padding: 16px 40px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background 0.2s;
+		.dp-brand-manager__script {
+			font-family: $dp-font-script;
+			font-size: 36px;
+			color: $dp-gray-mid;
+			margin-top: 32px;
+			font-weight: normal !important;
+		}
 
-            &:hover {
-                background: $dp-gray-mid;
-                text-decoration: none;
-            }
-        }
-    }
+		.dp-brand-manager__cta {
+			display: inline-block;
+			background: $dp-white;
+			color: $dp-black !important;
+			font-family: $dp-font-body;
+			font-size: 13px;
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+			padding: 16px 40px;
+			text-decoration: none !important;
+			font-weight: 600 !important;
+			transition: background 0.2s;
+
+			&:hover { background: $dp-gray-mid; }
+		}
+	}
 
 } // fin .dp-page
