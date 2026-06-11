@@ -44,7 +44,7 @@
                                                     Produção Gráfica
                                                 </h1>
                                                 <a href="#produtos-servicos" class="dp-hero__cta">
-                                                    Clique e conheça o que podemos fazer por você
+                                                    Clique e conheça <strong>o que podemos fazer por você</strong>
                                                 </a>
                                             </div>
                                         </div>
@@ -52,15 +52,14 @@
                                 </section>
 
                                 <!-- POR QUÉ DESIGN PIPA
-                                     Dos filas:
-                                     Fila 1: [texto col-5] [foto col-7]
-                                     Fila 2: cita manuscrita alineada bajo la foto
+                                     Col izq: texto + botón óvalo gris
+                                     Col der: foto Agus + flecha + Agus Correa CEO PNG
                                 -->
                                 <section class="dp-why">
                                     <div class="container">
+                                        <div class="row align-items-start">
 
-                                        <!-- Fila 1: texto + foto -->
-                                        <div class="row align-items-start mb-0">
+                                            <!-- Col izq: texto -->
                                             <div class="col-lg-5 dp-why__text-col">
                                                 <p class="dp-why__label">Por qué Design Pipa,</p>
                                                 <h2 class="dp-why__title">
@@ -72,49 +71,62 @@
                                                     E o que melhor, que pessoas que conhecem a dinâmica, estilo de vida, rotatividade, tendências, público e mais...<br/>
                                                     para acompanhar a jornada da sua marca?
                                                 </p>
-                                                <a href="#assessoria" class="dp-why__cta">Quero saber mais!</a>
                                             </div>
+
+                                            <!-- Col der: foto + flecha + nombre -->
                                             <div class="col-lg-7 dp-why__photo-col">
                                                 <img src="/design_pipa_theme/static/src/img/foto_agus_1.jpg"
                                                      alt="Agus Correa — CEO e Designer"
                                                      class="dp-why__photo"/>
-                                                <span class="dp-why__caption">Agus Correa CEO e Designer.</span>
+                                                <div class="dp-why__firma">
+                                                    <img src="/design_pipa_theme/static/src/img/flecha.png"
+                                                         alt=""
+                                                         class="dp-why__flecha-img"/>
+                                                    <img src="/design_pipa_theme/static/src/img/agus_correa_ceo.png"
+                                                         alt="Agus Correa CEO e Designer"
+                                                         class="dp-why__agus-img"/>
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <!-- Fila 2: cita manuscrita + flecha, alineadas a la derecha bajo la foto -->
-                                        <div class="row">
-                                            <div class="col-lg-5"></div>
-                                            <div class="col-lg-7 dp-why__cita-col">
-                                                <img src="/design_pipa_theme/static/src/img/cita_manuscrita.png"
-                                                     alt="nesta casa delirios criativos, sonhos que viram projetos e a coragem de comunicar, são acolhidos"
-                                                     class="dp-why__cita-img"/>
-                                            </div>
                                         </div>
-
                                     </div>
                                 </section>
 
                                 <!-- SE VOCÊ NÃO ESTÁ NO BRASIL
-                                     Layout limpio: [foto col-5] | [caja negra col-7]
-                                     Sección completamente separada, sin overlap
+                                     Col izq: foto cuadriculada rectangular (altura completa)
+                                     Col der arriba: blanco con cita manuscrita sobresaliendo desde la foto
+                                     Col der abajo: caja negra con título grande + texto
                                 -->
                                 <section class="dp-highlight">
-                                    <div class="row g-0 align-items-stretch mx-0">
-                                        <div class="col-lg-5 dp-highlight__photo-col">
+                                    <div class="row g-0 mx-0 dp-highlight__row">
+
+                                        <!-- Col izq: foto rectangular -->
+                                        <div class="col-lg-5 dp-highlight__left">
                                             <img src="/design_pipa_theme/static/src/img/foto_ola_vamos_criar.jpg"
-                                                 alt="Ola! Vamos criar?"
+                                                 alt="Papel cuadriculado Design Pipa"
                                                  class="dp-highlight__photo"/>
                                         </div>
-                                        <div class="col-lg-7 dp-highlight__box">
-                                            <h2 class="dp-highlight__title">
-                                                SE VOCÊ NÃO ESTÁ<br/>NO BRASIL,
-                                            </h2>
-                                            <p class="dp-highlight__body">
-                                                Contratar uma equipe com olhar completamente cosmopolita
-                                                e inspirado no mundo <em>mas com o tempero de Brasil.</em>
-                                            </p>
+
+                                        <!-- Col der: blanco arriba (cita sobresale) + caja negra abajo -->
+                                        <div class="col-lg-7 dp-highlight__right">
+                                            <!-- Zona blanca superior — la cita PNG sobresale desde la izq -->
+                                            <div class="dp-highlight__white">
+                                                <img src="/design_pipa_theme/static/src/img/cita_manuscrita.png"
+                                                     alt="nesta casa delirios criativos, sonhos que viram projetos e a coragem de comunicar, são acolhidos"
+                                                     class="dp-highlight__cita"/>
+                                            </div>
+                                            <!-- Caja negra inferior -->
+                                            <div class="dp-highlight__box">
+                                                <h2 class="dp-highlight__title">
+                                                    SE VOCÊ NÃO ESTÁ<br/>NO BRASIL,
+                                                </h2>
+                                                <p class="dp-highlight__body">
+                                                    Contratar uma equipe com olhar completamente cosmopolita
+                                                    e inspirado no mundo <em>mas com o tempero de Brasil.</em>
+                                                </p>
+                                            </div>
                                         </div>
+
                                     </div>
                                 </section>
 
