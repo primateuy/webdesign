@@ -6,13 +6,6 @@
          Se crea automáticamente al instalar el módulo.
          No toca ninguna página existente del sitio.
     ====================================================================== -->
-    <record id="dp_landing_page" model="website.page">
-        <field name="name">Design Pipa</field>
-        <field name="url">/design-pipa</field>
-        <field name="is_published">True</field>
-        <field name="view_id" ref="dp_landing_view"/>
-    </record>
-
     <record id="dp_landing_view" model="ir.ui.view">
         <field name="name">design_pipa.landing</field>
         <field name="type">qweb</field>
@@ -241,6 +234,17 @@
                 </t>
             </t>
         </field>
+    </record>
+
+
+    <!-- =====================================================================
+         PÁGINA: se declara DESPUÉS de la vista para que ref= pueda resolverla
+    ====================================================================== -->
+    <record id="dp_landing_page" model="website.page">
+        <field name="name">Design Pipa</field>
+        <field name="url">/design-pipa</field>
+        <field name="is_published">True</field>
+        <field name="view_id" ref="dp_landing_view"/>
     </record>
 
 </odoo>
