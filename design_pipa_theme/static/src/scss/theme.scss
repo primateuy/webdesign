@@ -1,11 +1,5 @@
 // =============================================================================
-// Design Pipa Theme — theme.scss
-// Fuente manuscrita principal: Brittany Signature (local)
-// Fuente manuscrita secundaria: Signaturae (local)
-// Títulos: Barlow Condensed (Google Fonts, provisional)
-// Cuerpo: Inter (Google Fonts, provisional)
-// TODO [001]: confirmar licencias comerciales de Brittany Signature y Signaturae
-// TODO [002]: confirmar fuentes originales de títulos y cuerpo con Agus
+// Design Pipa Theme — theme.scss v3
 // =============================================================================
 
 @font-face {
@@ -16,41 +10,27 @@
 	font-display: swap;
 }
 
-@font-face {
-	font-family: 'Signaturae';
-	src: url('/design_pipa_theme/static/src/fonts/Signaturae.otf') format('opentype'),
-	     url('/design_pipa_theme/static/src/fonts/Signaturae.ttf') format('truetype');
-	font-weight: normal;
-	font-style: normal;
-	font-display: swap;
-}
+$dp-black:       #0a0a0a;
+$dp-white:       #ffffff;
+$dp-gray-light:  #f5f5f5;
+$dp-gray-mid:    #cccccc;
+$dp-bm-color:    #4f4d45;
+$dp-font-title:  'Barlow Condensed', sans-serif;
+$dp-font-body:   'Inter', sans-serif;
+$dp-font-script: 'BrittanySignature', cursive;
 
-$dp-black:        #0a0a0a;
-$dp-white:        #ffffff;
-$dp-gray-light:   #f5f5f5;
-$dp-gray-mid:     #cccccc;
-$dp-font-title:   'Barlow Condensed', sans-serif;
-$dp-font-body:    'Inter', sans-serif;
-$dp-font-script:  'BrittanySignature', cursive;
-
-// =============================================================================
-// Ocultar header y footer de Odoo solo en la página de Design Pipa
-// Odoo agrega automáticamente una clase al body basada en la key de la vista
-// =============================================================================
+// Ocultar header y footer de Odoo solo en /design-pipa
 body:has(.dp-page) {
 	header#top,
-	footer {
+	footer.o_footer {
 		display: none !important;
 	}
 }
 
-// =============================================================================
-// Todo el CSS encapsulado en .dp-page
-// =============================================================================
 .dp-page {
 
 	// -------------------------------------------------------------------------
-	// Nav interna sticky — reemplaza el header de Odoo
+	// Nav sticky
 	// -------------------------------------------------------------------------
 	.dp-subnav {
 		position: sticky;
@@ -66,41 +46,39 @@ body:has(.dp-page) {
 			align-items: center;
 			justify-content: center;
 			gap: 48px;
-			height: 56px;
+			height: 52px;
 		}
 
 		a {
 			color: $dp-white !important;
 			font-family: $dp-font-body;
-			font-size: 13px;
+			font-size: 12px;
 			letter-spacing: 0.12em;
 			text-transform: uppercase;
 			text-decoration: none !important;
 			transition: opacity 0.2s;
-
 			&:hover { opacity: 0.6; }
 		}
 	}
 
 	// -------------------------------------------------------------------------
-	// Hero — fondo negro, título grande, eyebrow pequeño, botón con borde
-	// Fiel al PDF: todo el mismo peso visual, sin jerarquía exagerada
+	// Hero
 	// -------------------------------------------------------------------------
 	.dp-hero {
-		background-color: $dp-black;
+		background: $dp-black;
 		color: $dp-white;
-		padding: 60px 0 60px;
-		min-height: 70vh;
+		padding: 64px 0;
+		min-height: 65vh;
 		display: flex;
 		align-items: center;
 
 		.dp-hero__eyebrow {
 			font-family: $dp-font-body;
-			font-size: 12px;
+			font-size: 11px;
 			letter-spacing: 0.1em;
 			text-transform: uppercase;
 			color: $dp-gray-mid;
-			margin-bottom: 20px;
+			margin-bottom: 24px;
 			font-weight: 400 !important;
 		}
 
@@ -125,22 +103,24 @@ body:has(.dp-page) {
 			padding: 10px 24px;
 			text-decoration: none !important;
 			transition: background 0.2s, color 0.2s;
-
-			&:hover {
-				background: $dp-white;
-				color: $dp-black !important;
-			}
+			&:hover { background: $dp-white; color: $dp-black !important; }
 		}
 	}
 
 	// -------------------------------------------------------------------------
 	// Por qué Design Pipa
-	// Layout: col izquierda texto + CTA | col derecha foto + elementos superpuestos
-	// La cita manuscrita y la flecha van como imágenes PNG posicionadas
+	// 3 columnas independientes: texto | foto | cita+flecha
 	// -------------------------------------------------------------------------
 	.dp-why {
-		padding: 64px 0;
 		background: $dp-white;
+		padding: 64px 0;
+
+		.dp-why__text-col {
+			padding: 0 40px;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
 
 		.dp-why__label {
 			font-family: $dp-font-body;
@@ -154,7 +134,7 @@ body:has(.dp-page) {
 
 		.dp-why__title {
 			font-family: $dp-font-body;
-			font-size: clamp(18px, 2.2vw, 24px);
+			font-size: clamp(16px, 1.8vw, 20px);
 			font-weight: 700 !important;
 			line-height: 1.3;
 			margin-bottom: 20px;
@@ -164,12 +144,11 @@ body:has(.dp-page) {
 
 		.dp-why__body {
 			font-family: $dp-font-body;
-			font-size: 14px;
+			font-size: 13px;
 			line-height: 1.7;
 			color: #333;
 			margin-bottom: 28px;
 			font-weight: 400 !important;
-
 			strong { font-weight: 700 !important; }
 		}
 
@@ -183,32 +162,28 @@ body:has(.dp-page) {
 			text-transform: uppercase;
 			padding: 10px 24px;
 			text-decoration: none !important;
-			background: $dp-white;
 			transition: background 0.2s, color 0.2s;
-
-			&:hover {
-				background: $dp-black;
-				color: $dp-white !important;
-			}
+			align-self: flex-start;
+			&:hover { background: $dp-black; color: $dp-white !important; }
 		}
 
-		// Columna derecha: foto + elementos posicionados
-		.dp-why__right {
+		// Columna foto — sin padding, imagen a full
+		.dp-why__photo-col {
 			position: relative;
+			padding: 0;
 		}
 
 		.dp-why__photo {
 			width: 100%;
-			height: 500px;
+			height: 520px;
 			object-fit: cover;
 			object-position: top;
 			display: block;
 		}
 
-		// Caption "Agus Correa CEO e Designer" sobre la foto
 		.dp-why__caption {
 			position: absolute;
-			bottom: 12px;
+			bottom: 10px;
 			left: 12px;
 			font-family: $dp-font-body;
 			font-size: 11px;
@@ -217,76 +192,82 @@ body:has(.dp-page) {
 			text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
 		}
 
-		// Cita manuscrita — PNG posicionado a la derecha de la foto
-		.dp-why__cita {
-			position: absolute;
-			bottom: -20px;
-			right: -180px;
-			width: 280px;
-			pointer-events: none;
-
-			@media (max-width: 1200px) {
-				right: -20px;
-				bottom: -120px;
-				width: 220px;
-			}
+		// Columna cita — PNG independiente + flecha debajo
+		.dp-why__cita-col {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: flex-start;
+			padding: 24px 16px;
 		}
 
-		// Flecha que apunta desde la cita hacia la foto
-		.dp-why__flecha {
-			position: absolute;
-			bottom: 60px;
-			right: -60px;
-			width: 80px;
-			pointer-events: none;
-			// Invertir color para que se vea sobre fondo blanco
-			filter: invert(0);
+		.dp-why__cita-img {
+			width: 100%;
+			max-width: 260px;
+			// El PNG tiene fondo blanco — multiply lo elimina sobre fondo blanco
+			mix-blend-mode: multiply;
+		}
 
-			@media (max-width: 1200px) {
-				display: none;
-			}
+		.dp-why__flecha-img {
+			width: 80px;
+			margin-top: 8px;
+			margin-left: 20px;
+			// La flecha es blanca/oscura sobre fondo blanco
+			// invert la hace negra para que se vea
+			filter: invert(1);
+			opacity: 0.7;
 		}
 	}
 
 	// -------------------------------------------------------------------------
-	// Destaque — "Se você não está no Brasil"
-	// Fundo negro, dos columnas: texto izquierda | caja negra derecha con texto
+	// Se você não está no Brasil
+	// Layout: [foto izq] [caja negra der]
 	// -------------------------------------------------------------------------
 	.dp-highlight {
-		background: $dp-black;
-		color: $dp-white;
-		padding: 56px 0;
+		.dp-highlight__photo {
+			width: 100%;
+			height: 100%;
+			min-height: 360px;
+			object-fit: cover;
+			display: block;
+		}
 
-		.dp-highlight__col-left {
+		.dp-highlight__box {
+			background: $dp-black;
+			color: $dp-white;
 			display: flex;
-			align-items: center;
+			flex-direction: column;
+			justify-content: center;
+			padding: 48px 48px;
 		}
 
 		.dp-highlight__title {
 			font-family: $dp-font-body;
-			font-size: clamp(22px, 2.5vw, 30px);
+			font-size: clamp(24px, 3vw, 36px);
 			font-weight: 700 !important;
 			line-height: 1.2;
 			color: $dp-white !important;
-			margin: 0;
+			margin-bottom: 20px;
+			text-transform: uppercase;
 		}
 
 		.dp-highlight__body {
 			font-family: $dp-font-body;
-			font-size: 14px;
+			font-size: 15px;
 			line-height: 1.7;
 			color: $dp-gray-mid;
-			font-style: italic;
+			font-weight: 400 !important;
 			margin: 0;
 
-			strong { font-style: normal; font-weight: 700 !important; }
+			em {
+				font-style: italic;
+				color: $dp-white;
+			}
 		}
 	}
 
 	// -------------------------------------------------------------------------
 	// Servicios
-	// Lista de servicios izquierda | foto derecha
-	// Subtítulo en fuente script
 	// -------------------------------------------------------------------------
 	.dp-services {
 		padding: 64px 0;
@@ -302,21 +283,21 @@ body:has(.dp-page) {
 			margin-bottom: 4px;
 		}
 
-		.dp-services__title {
-			font-family: $dp-font-body;
-			font-size: clamp(22px, 2.5vw, 30px);
-			font-weight: 700 !important;
-			color: $dp-black !important;
-			margin-bottom: 2px;
-		}
-
 		.dp-services__subtitle {
 			font-family: $dp-font-script;
-			font-size: 26px;
+			font-size: 28px;
 			color: #555;
-			margin-bottom: 32px;
-			font-weight: normal !important;
 			display: block;
+			margin-bottom: 2px;
+			font-weight: normal !important;
+		}
+
+		.dp-services__title {
+			font-family: $dp-font-body;
+			font-size: clamp(18px, 2vw, 24px);
+			font-weight: 700 !important;
+			color: $dp-black !important;
+			margin-bottom: 28px;
 		}
 
 		.dp-services__list {
@@ -326,12 +307,12 @@ body:has(.dp-page) {
 
 			li {
 				font-family: $dp-font-body;
-				font-size: clamp(15px, 1.6vw, 18px);
+				font-size: clamp(14px, 1.5vw, 17px);
 				font-weight: 700 !important;
 				padding: 6px 0;
 				color: $dp-black !important;
-				border: none !important;
-
+				border-bottom: 1px solid $dp-gray-light;
+				&:last-child { border-bottom: none; }
 				&::before { content: none !important; }
 			}
 		}
@@ -344,7 +325,7 @@ body:has(.dp-page) {
 	}
 
 	// -------------------------------------------------------------------------
-	// Portfolio grid — 4 columnas, imágenes cuadradas
+	// Portfolio grid
 	// -------------------------------------------------------------------------
 	.dp-portfolio {
 		.dp-portfolio__grid {
@@ -367,16 +348,13 @@ body:has(.dp-page) {
 				object-fit: cover;
 				display: block;
 				transition: transform 0.4s ease;
-
 				&:hover { transform: scale(1.04); }
 			}
 		}
 	}
 
 	// -------------------------------------------------------------------------
-	// Producción Gráfica — fondo negro
-	// "produção" en body normal, "GRÁFICA" en title grande
-	// Lista en dos columnas
+	// Produção Gráfica
 	// -------------------------------------------------------------------------
 	.dp-print {
 		background: $dp-black;
@@ -388,8 +366,8 @@ body:has(.dp-page) {
 			font-size: 18px;
 			font-weight: 400 !important;
 			color: $dp-white !important;
-			margin-bottom: 0;
 			display: block;
+			margin-bottom: 0;
 		}
 
 		.dp-print__title {
@@ -407,7 +385,6 @@ body:has(.dp-page) {
 			font-size: 13px;
 			color: $dp-gray-mid;
 			margin-bottom: 28px;
-			font-weight: 400 !important;
 		}
 
 		.dp-print__cta {
@@ -421,11 +398,7 @@ body:has(.dp-page) {
 			padding: 10px 24px;
 			text-decoration: none !important;
 			transition: background 0.2s, color 0.2s;
-
-			&:hover {
-				background: $dp-white;
-				color: $dp-black !important;
-			}
+			&:hover { background: $dp-white; color: $dp-black !important; }
 		}
 
 		.dp-print__script {
@@ -448,60 +421,74 @@ body:has(.dp-page) {
 				font-size: 15px;
 				padding: 4px 0;
 				color: $dp-gray-mid;
-				font-weight: 400 !important;
-
 				&::before { content: none !important; }
 			}
 		}
 	}
 
 	// -------------------------------------------------------------------------
-	// Brand Manager — imagen de fondo con overlay
+	// Brand Manager
+	// Dos partes separadas: banner superior + caja color inferior
 	// -------------------------------------------------------------------------
-	.dp-brand-manager {
-		padding: 100px 0;
+
+	// Parte 1: banner con imagen de fondo y título grande
+	.dp-bm-banner {
 		background-size: cover;
 		background-position: center;
 		position: relative;
-		text-align: center;
+		padding: 80px 0;
 
+		// overlay muy suave para que se lea el texto sin tapar la imagen
 		&::before {
 			content: '';
 			position: absolute;
 			inset: 0;
-			background: rgba(#4f4d45, 0.75);
+			background: rgba(0, 0, 0, 0.45);
 		}
 
-		> .container { position: relative; z-index: 1; }
+		.container { position: relative; z-index: 1; }
 
-		.dp-brand-manager__eyebrow {
-			font-family: $dp-font-body;
-			font-size: 11px;
-			letter-spacing: 0.14em;
-			text-transform: uppercase;
-			color: $dp-white;
-			margin-bottom: 12px;
-			font-weight: 700 !important;
-		}
-
-		.dp-brand-manager__title {
+		.dp-bm-banner__title {
 			font-family: $dp-font-title;
-			font-size: clamp(48px, 6vw, 80px);
+			font-size: clamp(48px, 7vw, 96px);
 			font-weight: 800 !important;
 			text-transform: uppercase;
 			color: $dp-white !important;
-			margin-bottom: 4px;
+			line-height: 1;
+			margin-bottom: 16px;
 		}
 
-		.dp-brand-manager__subtitle {
+		.dp-bm-banner__sub {
 			font-family: $dp-font-body;
-			font-size: 15px;
+			font-size: 16px;
+			color: $dp-white;
+			margin: 0;
+		}
+	}
+
+	// Parte 2: caja color #4f4d45 con BRAND MANAGER
+	.dp-bm-box {
+		background: $dp-bm-color;
+		padding: 64px 0;
+
+		.dp-bm-box__title {
+			font-family: $dp-font-title;
+			font-size: clamp(40px, 5vw, 72px);
+			font-weight: 800 !important;
+			text-transform: uppercase;
+			color: $dp-white !important;
+			margin-bottom: 8px;
+		}
+
+		.dp-bm-box__subtitle {
+			font-family: $dp-font-body;
+			font-size: 16px;
+			font-weight: 700 !important;
 			color: $dp-white;
 			margin-bottom: 40px;
-			font-weight: 400 !important;
 		}
 
-		.dp-brand-manager__cta {
+		.dp-bm-box__cta {
 			display: inline-block;
 			background: $dp-white;
 			color: $dp-black !important;
@@ -513,17 +500,16 @@ body:has(.dp-page) {
 			text-decoration: none !important;
 			font-weight: 700 !important;
 			transition: opacity 0.2s;
-
 			&:hover { opacity: 0.85; }
 		}
 
-		// Imagen PNG "algo con esta letra" — sustituye texto script
-		.dp-brand-manager__script-img {
+		// PNG con fondo negro — screen lo hace transparente sobre fondo oscuro
+		.dp-bm-box__script {
 			display: block;
-			margin: 28px auto 0;
-			max-width: 360px;
+			margin: 32px auto 0;
+			max-width: 400px;
 			width: 100%;
-			opacity: 0.9;
+			mix-blend-mode: screen;
 		}
 	}
 
