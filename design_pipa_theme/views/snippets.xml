@@ -13,6 +13,11 @@
         <field name="arch" type="xml">
             <t t-name="design_pipa_theme.dp_landing_view">
                 <t t-call="website.layout">
+                    <t t-set="head">
+                        <link rel="preconnect" href="https://fonts.googleapis.com"/>
+                        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+                        <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Dancing+Script:wght@600;700&amp;display=swap" rel="stylesheet"/>
+                    </t>
                     <div id="wrap">
                         <div class="dp-page">
 
