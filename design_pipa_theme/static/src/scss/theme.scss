@@ -1,13 +1,21 @@
 // =============================================================================
 // Design Pipa Theme — theme.scss
-// Fuente manuscrita: Signaturae (local, incluida en el módulo)
+// Fuente manuscrita principal: Brittany Signature (local)
+// Fuente manuscrita secundaria: Signaturae (local)
 // Títulos: Barlow Condensed (Google Fonts, provisional)
 // Cuerpo: Inter (Google Fonts, provisional)
-// TODO [001]: confirmar con Agus si tiene licencia comercial de Signaturae
-// TODO [002]: confirmar fuentes originales de títulos y cuerpo
+// TODO [001]: confirmar licencias comerciales de Brittany Signature y Signaturae
+// TODO [002]: confirmar fuentes originales de títulos y cuerpo con Agus
 // =============================================================================
 
-// Fuente manuscrita local
+@font-face {
+	font-family: 'BrittanySignature';
+	src: url('/design_pipa_theme/static/src/fonts/BrittanySignature.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
 @font-face {
 	font-family: 'Signaturae';
 	src: url('/design_pipa_theme/static/src/fonts/Signaturae.otf') format('opentype'),
@@ -17,79 +25,92 @@
 	font-display: swap;
 }
 
-// Variables
-$dp-black:       #0a0a0a;
-$dp-white:       #ffffff;
-$dp-gray-light:  #f5f5f5;
-$dp-gray-mid:    #cccccc;
-$dp-font-title:  'Barlow Condensed', sans-serif;
-$dp-font-body:   'Inter', sans-serif;
-$dp-font-script: 'Signaturae', cursive;
+$dp-black:        #0a0a0a;
+$dp-white:        #ffffff;
+$dp-gray-light:   #f5f5f5;
+$dp-gray-mid:     #cccccc;
+$dp-font-title:   'Barlow Condensed', sans-serif;
+$dp-font-body:    'Inter', sans-serif;
+$dp-font-script:  'BrittanySignature', cursive;
 
 // =============================================================================
-// Todo encapsulado en .dp-page — no afecta otras páginas del sitio
+// Ocultar header y footer de Odoo solo en la página de Design Pipa
+// Odoo agrega automáticamente una clase al body basada en la key de la vista
+// =============================================================================
+body:has(.dp-page) {
+	header#top,
+	footer {
+		display: none !important;
+	}
+}
+
+// =============================================================================
+// Todo el CSS encapsulado en .dp-page
 // =============================================================================
 .dp-page {
 
 	// -------------------------------------------------------------------------
-	// Nav interna sticky
+	// Nav interna sticky — reemplaza el header de Odoo
 	// -------------------------------------------------------------------------
 	.dp-subnav {
 		position: sticky;
 		top: 0;
 		z-index: 1000;
 		background: $dp-black;
-		border-bottom: 1px solid #222;
 
 		.dp-subnav__inner {
 			max-width: 1200px;
 			margin: 0 auto;
-			padding: 0 24px;
+			padding: 0 32px;
 			display: flex;
-			gap: 32px;
 			align-items: center;
-			height: 52px;
+			justify-content: center;
+			gap: 48px;
+			height: 56px;
 		}
 
 		a {
-			color: $dp-gray-mid !important;
-			font-family: $dp-font-body;
-			font-size: 13px;
-			letter-spacing: 0.1em;
-			text-transform: uppercase;
-			text-decoration: none !important;
-			transition: color 0.2s;
-
-			&:hover {
-				color: $dp-white !important;
-			}
-		}
-	}
-
-	// -------------------------------------------------------------------------
-	// Hero
-	// -------------------------------------------------------------------------
-	.dp-hero {
-		background-color: $dp-black;
-		color: $dp-white;
-		padding: 80px 0 60px;
-
-		.dp-hero__eyebrow {
+			color: $dp-white !important;
 			font-family: $dp-font-body;
 			font-size: 13px;
 			letter-spacing: 0.12em;
 			text-transform: uppercase;
+			text-decoration: none !important;
+			transition: opacity 0.2s;
+
+			&:hover { opacity: 0.6; }
+		}
+	}
+
+	// -------------------------------------------------------------------------
+	// Hero — fondo negro, título grande, eyebrow pequeño, botón con borde
+	// Fiel al PDF: todo el mismo peso visual, sin jerarquía exagerada
+	// -------------------------------------------------------------------------
+	.dp-hero {
+		background-color: $dp-black;
+		color: $dp-white;
+		padding: 60px 0 60px;
+		min-height: 70vh;
+		display: flex;
+		align-items: center;
+
+		.dp-hero__eyebrow {
+			font-family: $dp-font-body;
+			font-size: 12px;
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
 			color: $dp-gray-mid;
-			margin-bottom: 24px;
+			margin-bottom: 20px;
+			font-weight: 400 !important;
 		}
 
 		.dp-hero__title {
 			font-family: $dp-font-title;
-			font-size: clamp(52px, 7vw, 96px);
+			font-size: clamp(56px, 8vw, 110px);
 			font-weight: 800 !important;
-			line-height: 1;
+			line-height: 0.95;
 			text-transform: uppercase;
-			margin-bottom: 32px;
+			margin-bottom: 40px;
 			color: $dp-white !important;
 		}
 
@@ -98,10 +119,10 @@ $dp-font-script: 'Signaturae', cursive;
 			border: 1px solid $dp-white;
 			color: $dp-white !important;
 			font-family: $dp-font-body;
-			font-size: 13px;
-			letter-spacing: 0.1em;
+			font-size: 11px;
+			letter-spacing: 0.12em;
 			text-transform: uppercase;
-			padding: 12px 28px;
+			padding: 10px 24px;
 			text-decoration: none !important;
 			transition: background 0.2s, color 0.2s;
 
@@ -114,42 +135,42 @@ $dp-font-script: 'Signaturae', cursive;
 
 	// -------------------------------------------------------------------------
 	// Por qué Design Pipa
+	// Layout: col izquierda texto + CTA | col derecha foto + elementos superpuestos
+	// La cita manuscrita y la flecha van como imágenes PNG posicionadas
 	// -------------------------------------------------------------------------
 	.dp-why {
-		padding: 80px 0;
+		padding: 64px 0;
 		background: $dp-white;
-		overflow: hidden;
-
-		.dp-why__col-text {
-			padding-right: 40px;
-		}
 
 		.dp-why__label {
 			font-family: $dp-font-body;
-			font-size: 12px;
-			font-weight: 600 !important;
-			letter-spacing: 0.15em;
+			font-size: 11px;
+			font-weight: 700 !important;
+			letter-spacing: 0.14em;
 			text-transform: uppercase;
-			color: $dp-gray-mid;
-			margin-bottom: 16px;
+			color: $dp-black;
+			margin-bottom: 12px;
 		}
 
 		.dp-why__title {
-			font-family: $dp-font-title;
-			font-size: clamp(32px, 4vw, 52px);
-			font-weight: 800 !important;
-			text-transform: uppercase;
-			line-height: 1.05;
-			margin-bottom: 24px;
+			font-family: $dp-font-body;
+			font-size: clamp(18px, 2.2vw, 24px);
+			font-weight: 700 !important;
+			line-height: 1.3;
+			margin-bottom: 20px;
 			color: $dp-black !important;
+			text-transform: uppercase;
 		}
 
 		.dp-why__body {
 			font-family: $dp-font-body;
-			font-size: 15px;
+			font-size: 14px;
 			line-height: 1.7;
-			color: #444;
-			margin-bottom: 32px;
+			color: #333;
+			margin-bottom: 28px;
+			font-weight: 400 !important;
+
+			strong { font-weight: 700 !important; }
 		}
 
 		.dp-why__cta {
@@ -157,11 +178,12 @@ $dp-font-script: 'Signaturae', cursive;
 			border: 1px solid $dp-black;
 			color: $dp-black !important;
 			font-family: $dp-font-body;
-			font-size: 13px;
-			letter-spacing: 0.1em;
+			font-size: 11px;
+			letter-spacing: 0.12em;
 			text-transform: uppercase;
-			padding: 12px 28px;
+			padding: 10px 24px;
 			text-decoration: none !important;
+			background: $dp-white;
 			transition: background 0.2s, color 0.2s;
 
 			&:hover {
@@ -170,97 +192,131 @@ $dp-font-script: 'Signaturae', cursive;
 			}
 		}
 
-		.dp-why__image-wrap {
+		// Columna derecha: foto + elementos posicionados
+		.dp-why__right {
 			position: relative;
-			overflow: visible;
+		}
 
-			img {
-				width: 100%;
-				height: 480px;
-				object-fit: cover;
-				display: block;
+		.dp-why__photo {
+			width: 100%;
+			height: 500px;
+			object-fit: cover;
+			object-position: top;
+			display: block;
+		}
+
+		// Caption "Agus Correa CEO e Designer" sobre la foto
+		.dp-why__caption {
+			position: absolute;
+			bottom: 12px;
+			left: 12px;
+			font-family: $dp-font-body;
+			font-size: 11px;
+			color: $dp-white;
+			font-style: italic;
+			text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+		}
+
+		// Cita manuscrita — PNG posicionado a la derecha de la foto
+		.dp-why__cita {
+			position: absolute;
+			bottom: -20px;
+			right: -180px;
+			width: 280px;
+			pointer-events: none;
+
+			@media (max-width: 1200px) {
+				right: -20px;
+				bottom: -120px;
+				width: 220px;
 			}
+		}
 
-			// Cita manuscrita: posicionada sobre la imagen, contenida
-			.dp-why__script {
-				position: absolute;
-				bottom: 16px;
-				right: 16px;
-				font-family: $dp-font-script;
-				font-size: 28px;
-				color: $dp-white;
-				line-height: 1.3;
-				max-width: 260px;
-				text-align: right;
-				pointer-events: none;
-				// sombra para legibilidad sobre la imagen
-				text-shadow: 1px 1px 6px rgba(0,0,0,0.7);
+		// Flecha que apunta desde la cita hacia la foto
+		.dp-why__flecha {
+			position: absolute;
+			bottom: 60px;
+			right: -60px;
+			width: 80px;
+			pointer-events: none;
+			// Invertir color para que se vea sobre fondo blanco
+			filter: invert(0);
+
+			@media (max-width: 1200px) {
+				display: none;
 			}
 		}
 	}
 
 	// -------------------------------------------------------------------------
-	// Destaque Internacional
+	// Destaque — "Se você não está no Brasil"
+	// Fundo negro, dos columnas: texto izquierda | caja negra derecha con texto
 	// -------------------------------------------------------------------------
 	.dp-highlight {
 		background: $dp-black;
 		color: $dp-white;
-		padding: 60px 0;
+		padding: 56px 0;
+
+		.dp-highlight__col-left {
+			display: flex;
+			align-items: center;
+		}
 
 		.dp-highlight__title {
-			font-family: $dp-font-title;
-			font-size: clamp(28px, 3.5vw, 44px);
-			font-weight: 800 !important;
-			text-transform: uppercase;
-			margin-bottom: 16px;
+			font-family: $dp-font-body;
+			font-size: clamp(22px, 2.5vw, 30px);
+			font-weight: 700 !important;
+			line-height: 1.2;
 			color: $dp-white !important;
+			margin: 0;
 		}
 
 		.dp-highlight__body {
 			font-family: $dp-font-body;
-			font-size: 15px;
+			font-size: 14px;
 			line-height: 1.7;
 			color: $dp-gray-mid;
-			max-width: 520px;
-			margin: 0 auto;
+			font-style: italic;
+			margin: 0;
+
+			strong { font-style: normal; font-weight: 700 !important; }
 		}
 	}
 
 	// -------------------------------------------------------------------------
 	// Servicios
+	// Lista de servicios izquierda | foto derecha
+	// Subtítulo en fuente script
 	// -------------------------------------------------------------------------
 	.dp-services {
-		padding: 80px 0;
+		padding: 64px 0;
 		background: $dp-white;
-
-		.dp-services__header {
-			margin-bottom: 48px;
-		}
 
 		.dp-services__label {
 			font-family: $dp-font-body;
-			font-size: 12px;
-			font-weight: 600 !important;
-			letter-spacing: 0.15em;
+			font-size: 11px;
+			font-weight: 700 !important;
+			letter-spacing: 0.14em;
 			text-transform: uppercase;
-			color: $dp-gray-mid;
-			margin-bottom: 12px;
+			color: $dp-black;
+			margin-bottom: 4px;
 		}
 
 		.dp-services__title {
-			font-family: $dp-font-title;
-			font-size: clamp(28px, 3.5vw, 48px);
-			font-weight: 800 !important;
-			text-transform: uppercase;
+			font-family: $dp-font-body;
+			font-size: clamp(22px, 2.5vw, 30px);
+			font-weight: 700 !important;
 			color: $dp-black !important;
+			margin-bottom: 2px;
 		}
 
 		.dp-services__subtitle {
 			font-family: $dp-font-script;
-			font-size: 28px;
-			color: #666;
-			margin-top: 4px;
+			font-size: 26px;
+			color: #555;
+			margin-bottom: 32px;
 			font-weight: normal !important;
+			display: block;
 		}
 
 		.dp-services__list {
@@ -269,35 +325,28 @@ $dp-font-script: 'Signaturae', cursive;
 			margin: 0 !important;
 
 			li {
-				font-family: $dp-font-title;
-				font-size: clamp(20px, 2.2vw, 28px);
+				font-family: $dp-font-body;
+				font-size: clamp(15px, 1.6vw, 18px);
 				font-weight: 700 !important;
-				text-transform: lowercase;
-				padding: 10px 0;
-				border-bottom: 1px solid $dp-gray-light;
-				letter-spacing: 0.02em;
+				padding: 6px 0;
 				color: $dp-black !important;
+				border: none !important;
 
-				&:last-child { border-bottom: none; }
-
-				// resetear cualquier bullet del tema base
 				&::before { content: none !important; }
 			}
 		}
 
 		.dp-services__image {
 			width: 100%;
-			height: 500px;
+			height: 480px;
 			object-fit: cover;
 		}
 	}
 
 	// -------------------------------------------------------------------------
-	// Portfolio grid
+	// Portfolio grid — 4 columnas, imágenes cuadradas
 	// -------------------------------------------------------------------------
 	.dp-portfolio {
-		background: $dp-black;
-
 		.dp-portfolio__grid {
 			display: grid;
 			grid-template-columns: repeat(4, 1fr);
@@ -325,46 +374,40 @@ $dp-font-script: 'Signaturae', cursive;
 	}
 
 	// -------------------------------------------------------------------------
-	// Producción Gráfica
+	// Producción Gráfica — fondo negro
+	// "produção" en body normal, "GRÁFICA" en title grande
+	// Lista en dos columnas
 	// -------------------------------------------------------------------------
 	.dp-print {
 		background: $dp-black;
 		color: $dp-white;
-		padding: 80px 0;
+		padding: 64px 0;
+
+		.dp-print__pretitle {
+			font-family: $dp-font-body;
+			font-size: 18px;
+			font-weight: 400 !important;
+			color: $dp-white !important;
+			margin-bottom: 0;
+			display: block;
+		}
 
 		.dp-print__title {
 			font-family: $dp-font-title;
+			font-size: clamp(56px, 8vw, 100px);
 			font-weight: 800 !important;
 			text-transform: uppercase;
-			line-height: 1;
-			margin-bottom: 8px;
+			line-height: 0.9;
+			margin-bottom: 16px;
 			color: $dp-white !important;
-
-			span {
-				display: block;
-				font-size: clamp(20px, 3vw, 36px);
-				font-weight: 400 !important;
-				text-transform: none;
-				font-family: $dp-font-body;
-			}
-
-			// el GRÁFICA grande
-			font-size: clamp(48px, 7vw, 96px);
 		}
 
 		.dp-print__sub {
 			font-family: $dp-font-body;
-			font-size: 14px;
+			font-size: 13px;
 			color: $dp-gray-mid;
-			margin-bottom: 32px;
-		}
-
-		.dp-print__script {
-			font-family: $dp-font-script;
-			font-size: 32px;
-			color: $dp-gray-mid;
-			margin-top: 32px;
-			font-weight: normal !important;
+			margin-bottom: 28px;
+			font-weight: 400 !important;
 		}
 
 		.dp-print__cta {
@@ -372,10 +415,10 @@ $dp-font-script: 'Signaturae', cursive;
 			border: 1px solid $dp-white;
 			color: $dp-white !important;
 			font-family: $dp-font-body;
-			font-size: 13px;
-			letter-spacing: 0.1em;
+			font-size: 11px;
+			letter-spacing: 0.12em;
 			text-transform: uppercase;
-			padding: 12px 28px;
+			padding: 10px 24px;
 			text-decoration: none !important;
 			transition: background 0.2s, color 0.2s;
 
@@ -383,6 +426,15 @@ $dp-font-script: 'Signaturae', cursive;
 				background: $dp-white;
 				color: $dp-black !important;
 			}
+		}
+
+		.dp-print__script {
+			font-family: $dp-font-script;
+			font-size: 32px;
+			color: $dp-gray-mid;
+			margin-top: 24px;
+			display: block;
+			font-weight: normal !important;
 		}
 
 		.dp-print__list {
@@ -394,8 +446,9 @@ $dp-font-script: 'Signaturae', cursive;
 			li {
 				font-family: $dp-font-body;
 				font-size: 15px;
-				padding: 5px 0;
+				padding: 4px 0;
 				color: $dp-gray-mid;
+				font-weight: 400 !important;
 
 				&::before { content: none !important; }
 			}
@@ -403,7 +456,7 @@ $dp-font-script: 'Signaturae', cursive;
 	}
 
 	// -------------------------------------------------------------------------
-	// Brand Manager
+	// Brand Manager — imagen de fondo con overlay
 	// -------------------------------------------------------------------------
 	.dp-brand-manager {
 		padding: 100px 0;
@@ -416,42 +469,36 @@ $dp-font-script: 'Signaturae', cursive;
 			content: '';
 			position: absolute;
 			inset: 0;
-			background: rgba($dp-black, 0.65);
+			background: rgba(#4f4d45, 0.75);
 		}
 
 		> .container { position: relative; z-index: 1; }
 
 		.dp-brand-manager__eyebrow {
 			font-family: $dp-font-body;
-			font-size: 13px;
-			letter-spacing: 0.15em;
+			font-size: 11px;
+			letter-spacing: 0.14em;
 			text-transform: uppercase;
-			color: $dp-gray-mid;
-			margin-bottom: 16px;
+			color: $dp-white;
+			margin-bottom: 12px;
+			font-weight: 700 !important;
 		}
 
 		.dp-brand-manager__title {
 			font-family: $dp-font-title;
-			font-size: clamp(36px, 5vw, 72px);
+			font-size: clamp(48px, 6vw, 80px);
 			font-weight: 800 !important;
 			text-transform: uppercase;
 			color: $dp-white !important;
-			margin-bottom: 8px;
+			margin-bottom: 4px;
 		}
 
 		.dp-brand-manager__subtitle {
 			font-family: $dp-font-body;
-			font-size: 16px;
-			color: $dp-gray-mid;
+			font-size: 15px;
+			color: $dp-white;
 			margin-bottom: 40px;
-		}
-
-		.dp-brand-manager__script {
-			font-family: $dp-font-script;
-			font-size: 36px;
-			color: $dp-gray-mid;
-			margin-top: 32px;
-			font-weight: normal !important;
+			font-weight: 400 !important;
 		}
 
 		.dp-brand-manager__cta {
@@ -459,15 +506,24 @@ $dp-font-script: 'Signaturae', cursive;
 			background: $dp-white;
 			color: $dp-black !important;
 			font-family: $dp-font-body;
-			font-size: 13px;
-			letter-spacing: 0.1em;
+			font-size: 11px;
+			letter-spacing: 0.12em;
 			text-transform: uppercase;
-			padding: 16px 40px;
+			padding: 14px 40px;
 			text-decoration: none !important;
-			font-weight: 600 !important;
-			transition: background 0.2s;
+			font-weight: 700 !important;
+			transition: opacity 0.2s;
 
-			&:hover { background: $dp-gray-mid; }
+			&:hover { opacity: 0.85; }
+		}
+
+		// Imagen PNG "algo con esta letra" — sustituye texto script
+		.dp-brand-manager__script-img {
+			display: block;
+			margin: 28px auto 0;
+			max-width: 360px;
+			width: 100%;
+			opacity: 0.9;
 		}
 	}
 

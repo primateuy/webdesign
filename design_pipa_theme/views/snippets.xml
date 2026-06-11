@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <!-- =====================================================================
-         PÁGINA NUEVA: design-pipa
-         Se crea automáticamente al instalar el módulo.
-         No toca ninguna página existente del sitio.
-    ====================================================================== -->
     <record id="dp_landing_view" model="ir.ui.view">
         <field name="name">design_pipa.landing</field>
         <field name="type">qweb</field>
@@ -16,237 +11,236 @@
                     <t t-set="head">
                         <link rel="preconnect" href="https://fonts.googleapis.com"/>
                         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
-                        <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Dancing+Script:wght@600;700&amp;display=swap" rel="stylesheet"/>
+                        <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;800&amp;family=Inter:wght@400;700&amp;display=swap" rel="stylesheet"/>
                     </t>
                     <div id="wrap">
                         <div class="dp-page">
 
-                        <!-- NAV INTERNA FIJA -->
-                        <nav class="dp-subnav">
-                            <div class="dp-subnav__inner">
-                                <a href="#inicio">Sobre o Estúdio</a>
-                                <a href="#produtos-servicos">Produtos e Serviços</a>
-                                <a href="#assessoria">Assessoria</a>
-                            </div>
-                        </nav>
+                            <!-- NAV INTERNA STICKY -->
+                            <nav class="dp-subnav">
+                                <div class="dp-subnav__inner">
+                                    <a href="#inicio">Sobre o Estúdio</a>
+                                    <a href="#produtos-servicos">Produtos e Serviços</a>
+                                    <a href="#assessoria">Assessoria</a>
+                                </div>
+                            </nav>
 
-                        <!-- ANCLA: INICIO -->
-                        <div id="inicio">
+                            <!-- ============================================
+                                 ANCLA: INICIO
+                            ============================================ -->
+                            <div id="inicio">
 
-                            <!-- HERO -->
-                            <section class="dp-hero">
-                                <div class="container">
-                                    <div class="row align-items-center">
-                                        <div class="col-lg-7">
-                                            <p class="dp-hero__eyebrow">
-                                                À mais de 12 anos com base no Paraíso da Praia da Pipa, RN — Brasil
-                                            </p>
-                                            <h1 class="dp-hero__title">
-                                                Comunicação<br/>
-                                                Design<br/>
-                                                Produção Gráfica
-                                            </h1>
-                                            <a href="#produtos-servicos" class="dp-hero__cta">
-                                                Clique e conheça o que podemos fazer por você
-                                            </a>
+                                <!-- HERO -->
+                                <section class="dp-hero">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-8">
+                                                <p class="dp-hero__eyebrow">
+                                                    À mais de 12 anos com base no Paraíso da Praia da Pipa, RN — Brasil
+                                                </p>
+                                                <h1 class="dp-hero__title">
+                                                    Comunicação<br/>
+                                                    Design<br/>
+                                                    Produção Gráfica
+                                                </h1>
+                                                <a href="#produtos-servicos" class="dp-hero__cta">
+                                                    Clique e conheça o que podemos fazer por você
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </section>
+                                </section>
 
-                            <!-- POR QUÉ DESIGN PIPA -->
-                            <section class="dp-why">
-                                <div class="container">
-                                    <div class="row align-items-center">
-                                        <div class="col-lg-6 dp-why__col-text">
-                                            <p class="dp-why__label">Por qué Design Pipa</p>
-                                            <h2 class="dp-why__title">
-                                                Aqui ou desde qualquer<br/>lugar do mundo?
-                                            </h2>
-                                            <p class="dp-why__body">
-                                                Somos a única agência nesta região paradisíaca do litoral nordestino.
-                                                Morar e construir aqui, seja uma vida ou projetos criativos tem as suas
-                                                particularidades. E o que melhor, que pessoas que conhecem a dinâmica,
-                                                estilo de vida, rotatividade, tendências, público e mais... para
-                                                acompanhar a jornada da sua marca?
-                                            </p>
-                                            <a href="#produtos-servicos" class="dp-why__cta">Quero saber mais!</a>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="dp-why__image-wrap">
-                                                <!-- PLACEHOLDER: reemplazar por foto de Agus desde el editor visual -->
-                                                <img src="/design_pipa_theme/static/src/img/placeholder_portrait.jpg"
-                                                     alt="Agus Correa — CEO e Designer"/>
-                                                <div class="dp-why__script">
-                                                    nesta casa delirios criativos,<br/>
-                                                    sonhos que viram projetos<br/>
-                                                    e a coragem de comunicar,<br/>
-                                                    são acolhidos
+                                <!-- POR QUÉ DESIGN PIPA -->
+                                <section class="dp-why">
+                                    <div class="container">
+                                        <div class="row align-items-start">
+                                            <div class="col-lg-5">
+                                                <p class="dp-why__label">Por qué Design Pipa,</p>
+                                                <h2 class="dp-why__title">
+                                                    Aqui ou desde qualquer lugar do mundo?
+                                                </h2>
+                                                <p class="dp-why__body">
+                                                    Somos a <strong>única agência</strong> nesta região paradisíaca do litoral nordestino.<br/>
+                                                    Morar e construir aqui, seja uma vida ou projetos criativos tem as suas particularidades.<br/>
+                                                    E o que melhor, que pessoas que conhecem a dinâmica, estilo de vida,
+                                                    rotatividade, tendências, público e mais...<br/>
+                                                    para acompanhar a jornada da sua marca?
+                                                </p>
+                                                <a href="#assessoria" class="dp-why__cta">Quero saber mais!</a>
+                                            </div>
+                                            <div class="col-lg-7">
+                                                <div class="dp-why__right">
+                                                    <img src="/design_pipa_theme/static/src/img/foto_agus_2.jpg"
+                                                         alt="Agus Correa — CEO e Designer"
+                                                         class="dp-why__photo"/>
+                                                    <span class="dp-why__caption">Agus Correa CEO e Designer.</span>
+                                                    <img src="/design_pipa_theme/static/src/img/flecha.png"
+                                                         alt=""
+                                                         class="dp-why__flecha"/>
+                                                    <img src="/design_pipa_theme/static/src/img/cita_manuscrita.png"
+                                                         alt="nesta casa delirios criativos, sonhos que viram projetos e a coragem de comunicar, são acolhidos"
+                                                         class="dp-why__cita"/>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </section>
+                                </section>
 
-                            <!-- DESTAQUE INTERNACIONAL -->
-                            <section class="dp-highlight">
-                                <div class="container">
-                                    <div class="row justify-content-center">
-                                        <div class="col-lg-8 text-center">
-                                            <h2 class="dp-highlight__title">
-                                                Se você não está no Brasil,
-                                            </h2>
-                                            <p class="dp-highlight__body">
-                                                Contratar uma equipe com olhar completamente cosmopolita
-                                                e inspirado no mundo mas com o tempero de Brasil.
-                                            </p>
+                                <!-- DESTAQUE -->
+                                <section class="dp-highlight">
+                                    <div class="container">
+                                        <div class="row align-items-center">
+                                            <div class="col-lg-5 dp-highlight__col-left">
+                                                <h2 class="dp-highlight__title">
+                                                    SE VOCÊ NÃO ESTÁ<br/>NO BRASIL,
+                                                </h2>
+                                            </div>
+                                            <div class="col-lg-7">
+                                                <p class="dp-highlight__body">
+                                                    Contratar uma equipe com olhar completamente cosmopolita
+                                                    e inspirado no mundo <strong>mas com o tempero de Brasil.</strong>
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </section>
+                                </section>
 
-                        </div><!-- //#inicio -->
+                            </div><!-- //#inicio -->
 
-                        <!-- ANCLA: PRODUTOS E SERVIÇOS -->
-                        <div id="produtos-servicos">
+                            <!-- ============================================
+                                 ANCLA: PRODUTOS E SERVIÇOS
+                            ============================================ -->
+                            <div id="produtos-servicos">
 
-                            <!-- SERVICIOS -->
-                            <section class="dp-services">
-                                <div class="container">
-                                    <div class="dp-services__header">
-                                        <p class="dp-services__label">sua assistência criativa começa aqui</p>
-                                        <h2 class="dp-services__title">Conheça nosso catálogo</h2>
-                                        <p class="dp-services__subtitle">de produtos &amp; serviços</p>
-                                    </div>
-                                    <div class="row align-items-start">
-                                        <div class="col-lg-6">
-                                            <ul class="dp-services__list">
-                                                <li>identidade visual</li>
-                                                <li>logotipos</li>
-                                                <li>branding</li>
-                                                <li>re-branding</li>
-                                                <li>comunicação</li>
-                                                <li>artes digitais</li>
-                                                <li>marketing</li>
-                                                <li>cobertura de eventos</li>
-                                                <li>instalação de adesivos</li>
-                                            </ul>
+                                <!-- SERVICIOS -->
+                                <section class="dp-services">
+                                    <div class="container">
+                                        <div class="row align-items-start">
+                                            <div class="col-lg-6">
+                                                <p class="dp-services__label">sua assistência criativa começa aqui</p>
+                                                <span class="dp-services__subtitle">conheça nosso catálogo</span>
+                                                <p class="dp-services__title">de produtos &amp; serviços</p>
+                                                <ul class="dp-services__list">
+                                                    <li>identidade visual</li>
+                                                    <li>logotipos</li>
+                                                    <li>branding</li>
+                                                    <li>re-branding</li>
+                                                    <li>comunicação</li>
+                                                    <li>artes digitais</li>
+                                                    <li>marketing</li>
+                                                    <li>cobertura de eventos</li>
+                                                    <li>instalação de adesivos</li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <img src="/design_pipa_theme/static/src/img/foto_agus_1.jpg"
+                                                     alt="Design Pipa Servicios"
+                                                     class="dp-services__image"/>
+                                            </div>
                                         </div>
-                                        <div class="col-lg-6">
-                                            <!-- PLACEHOLDER: reemplazar por foto de servicios desde el editor visual -->
-                                            <img src="/design_pipa_theme/static/src/img/placeholder_services.jpg"
-                                                 alt="Servicios Design Pipa"
-                                                 class="dp-services__image"/>
-                                        </div>
                                     </div>
-                                </div>
-                            </section>
+                                </section>
 
-                            <!-- PORTFOLIO GRID -->
-                            <section class="dp-portfolio">
-                                <div class="container-fluid">
+                                <!-- PORTFOLIO GRID — 8 items, 7 reales + 1 placeholder -->
+                                <section class="dp-portfolio">
                                     <div class="dp-portfolio__grid">
-                                        <!-- PLACEHOLDER x8: reemplazar cada imagen desde el editor visual -->
                                         <div class="dp-portfolio__item">
-                                            <img src="/design_pipa_theme/static/src/img/placeholder_grid.jpg" alt="Portafolio 1"/>
+                                            <img src="/design_pipa_theme/static/src/img/portfolio_01.jpg" alt="Portfolio 1"/>
                                         </div>
                                         <div class="dp-portfolio__item">
-                                            <img src="/design_pipa_theme/static/src/img/placeholder_grid.jpg" alt="Portafolio 2"/>
+                                            <img src="/design_pipa_theme/static/src/img/portfolio_02.jpg" alt="Portfolio 2"/>
                                         </div>
                                         <div class="dp-portfolio__item">
-                                            <img src="/design_pipa_theme/static/src/img/placeholder_grid.jpg" alt="Portafolio 3"/>
+                                            <img src="/design_pipa_theme/static/src/img/portfolio_03.jpg" alt="Portfolio 3"/>
                                         </div>
                                         <div class="dp-portfolio__item">
-                                            <img src="/design_pipa_theme/static/src/img/placeholder_grid.jpg" alt="Portafolio 4"/>
+                                            <img src="/design_pipa_theme/static/src/img/portfolio_04.jpg" alt="Portfolio 4"/>
                                         </div>
                                         <div class="dp-portfolio__item">
-                                            <img src="/design_pipa_theme/static/src/img/placeholder_grid.jpg" alt="Portafolio 5"/>
+                                            <img src="/design_pipa_theme/static/src/img/portfolio_05.jpg" alt="Portfolio 5"/>
                                         </div>
                                         <div class="dp-portfolio__item">
-                                            <img src="/design_pipa_theme/static/src/img/placeholder_grid.jpg" alt="Portafolio 6"/>
+                                            <img src="/design_pipa_theme/static/src/img/portfolio_06.jpg" alt="Portfolio 6"/>
                                         </div>
                                         <div class="dp-portfolio__item">
-                                            <img src="/design_pipa_theme/static/src/img/placeholder_grid.jpg" alt="Portafolio 7"/>
+                                            <img src="/design_pipa_theme/static/src/img/portfolio_07.jpg" alt="Portfolio 7"/>
                                         </div>
                                         <div class="dp-portfolio__item">
-                                            <img src="/design_pipa_theme/static/src/img/placeholder_grid.jpg" alt="Portafolio 8"/>
+                                            <img src="/design_pipa_theme/static/src/img/placeholder_grid.jpg" alt="Portfolio 8"/>
                                         </div>
                                     </div>
-                                </div>
-                            </section>
+                                </section>
 
-                            <!-- PRODUCCIÓN GRÁFICA -->
-                            <section class="dp-print">
-                                <div class="container">
-                                    <div class="row align-items-center">
-                                        <div class="col-lg-5">
-                                            <h2 class="dp-print__title">
-                                                <span>produção</span>
-                                                GRÁFICA
-                                            </h2>
-                                            <p class="dp-print__sub">envios para todo Brasil.</p>
-                                            <a href="#assessoria" class="dp-print__cta">Solicite aqui seu orçamento</a>
-                                            <p class="dp-print__script">todo tipo de impressão!</p>
-                                        </div>
-                                        <div class="col-lg-7">
-                                            <ul class="dp-print__list">
-                                                <li>impressões A5, A4, A3</li>
-                                                <li>letreiros</li>
-                                                <li>flyer</li>
-                                                <li>folder</li>
-                                                <li>cartão de visita</li>
-                                                <li>cardápio</li>
-                                                <li>adesivos</li>
-                                                <li>tag</li>
-                                                <li>fardamentos</li>
-                                                <li>bonés</li>
-                                                <li>eco bags</li>
-                                            </ul>
+                                <!-- PRODUCCIÓN GRÁFICA -->
+                                <section class="dp-print">
+                                    <div class="container">
+                                        <div class="row align-items-center">
+                                            <div class="col-lg-5">
+                                                <span class="dp-print__pretitle">produção</span>
+                                                <h2 class="dp-print__title">GRÁFICA</h2>
+                                                <p class="dp-print__sub">envios para todo Brasil.</p>
+                                                <a href="#assessoria" class="dp-print__cta">Solicite aqui seu orçamento</a>
+                                                <span class="dp-print__script">todo tipo de impressão!</span>
+                                            </div>
+                                            <div class="col-lg-7">
+                                                <ul class="dp-print__list">
+                                                    <li>impressões A5, A4, A3</li>
+                                                    <li>letreiros</li>
+                                                    <li>flyer</li>
+                                                    <li>folder</li>
+                                                    <li>cartão de visita</li>
+                                                    <li>cardápio</li>
+                                                    <li>adesivos</li>
+                                                    <li>tag</li>
+                                                    <li>fardamentos</li>
+                                                    <li>bonés</li>
+                                                    <li>eco bags</li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </section>
+                                </section>
 
-                        </div><!-- //#produtos-servicos -->
+                            </div><!-- //#produtos-servicos -->
 
-                        <!-- ANCLA: ASSESSORIA -->
-                        <div id="assessoria">
+                            <!-- ============================================
+                                 ANCLA: ASSESSORIA
+                            ============================================ -->
+                            <div id="assessoria">
 
-                            <!-- BRAND MANAGER -->
-                            <section class="dp-brand-manager"
-                                     style="background-image: url('/design_pipa_theme/static/src/img/placeholder_bg.jpg')">
-                                <div class="container">
-                                    <div class="row justify-content-center">
-                                        <div class="col-lg-8 text-center">
-                                            <p class="dp-brand-manager__eyebrow">Que comunica sua marca?</p>
-                                            <h2 class="dp-brand-manager__title">Brand Manager</h2>
-                                            <p class="dp-brand-manager__subtitle">
-                                                Assessoria de Comunicação<br/>
-                                                Vamos construir juntos a estratégia definitiva.
-                                            </p>
-                                            <a href="mailto:contato@designpipa.com.br" class="dp-brand-manager__cta">
-                                                Quero saber mais
-                                            </a>
-                                            <p class="dp-brand-manager__script">algo com esta letra.</p>
+                                <section class="dp-brand-manager"
+                                         style="background-image: url('/design_pipa_theme/static/src/img/banner_brand_manager.jpg')">
+                                    <div class="container">
+                                        <div class="row justify-content-center">
+                                            <div class="col-lg-8 text-center">
+                                                <p class="dp-brand-manager__eyebrow">Que comunica sua marca?</p>
+                                                <h2 class="dp-brand-manager__title">Brand Manager</h2>
+                                                <p class="dp-brand-manager__subtitle">
+                                                    Assessoria de Comunicação<br/>
+                                                    Vamos construir juntos a estratégia definitiva.
+                                                </p>
+                                                <a href="mailto:contato@designpipa.com.br" class="dp-brand-manager__cta">
+                                                    Quero saber mais
+                                                </a>
+                                                <img src="/design_pipa_theme/static/src/img/algo_con_esta_letra.png"
+                                                     alt="algo con esta letra"
+                                                     class="dp-brand-manager__script-img"/>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </section>
+                                </section>
 
-                        </div><!-- //#assessoria -->
+                            </div><!-- //#assessoria -->
 
-                    </div><!-- //.dp-page -->
+                        </div><!-- //.dp-page -->
                     </div><!-- //#wrap -->
                 </t>
             </t>
         </field>
     </record>
 
-
-    <!-- =====================================================================
-         PÁGINA: se declara DESPUÉS de la vista para que ref= pueda resolverla
-    ====================================================================== -->
+    <!-- website.page declarado DESPUÉS de ir.ui.view -->
     <record id="dp_landing_page" model="website.page">
         <field name="name">Design Pipa</field>
         <field name="url">/design-pipa</field>
