@@ -109,17 +109,18 @@ body:has(.dp-page) {
 
 	// -------------------------------------------------------------------------
 	// Por qué Design Pipa
-	// 3 columnas independientes: texto | foto | cita+flecha
+	// Fila 1: texto col-5 | foto col-7
+	// Fila 2: cita manuscrita bajo la foto
 	// -------------------------------------------------------------------------
 	.dp-why {
 		background: $dp-white;
-		padding: 64px 0;
+		padding: 64px 0 0;
 
 		.dp-why__text-col {
-			padding: 0 40px;
+			padding-right: 40px;
 			display: flex;
 			flex-direction: column;
-			justify-content: center;
+			justify-content: flex-start;
 		}
 
 		.dp-why__label {
@@ -163,19 +164,18 @@ body:has(.dp-page) {
 			padding: 10px 24px;
 			text-decoration: none !important;
 			transition: background 0.2s, color 0.2s;
-			align-self: flex-start;
 			&:hover { background: $dp-black; color: $dp-white !important; }
 		}
 
-		// Columna foto — sin padding, imagen a full
 		.dp-why__photo-col {
 			position: relative;
-			padding: 0;
+			padding-left: 0;
+			padding-right: 0;
 		}
 
 		.dp-why__photo {
 			width: 100%;
-			height: 520px;
+			height: 480px;
 			object-fit: cover;
 			object-position: top;
 			display: block;
@@ -192,43 +192,36 @@ body:has(.dp-page) {
 			text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
 		}
 
-		// Columna cita — PNG independiente + flecha debajo
+		// Cita manuscrita — fila separada, alineada bajo la foto
 		.dp-why__cita-col {
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: flex-start;
-			padding: 24px 16px;
+			padding: 24px 0 40px;
 		}
 
 		.dp-why__cita-img {
 			width: 100%;
-			max-width: 260px;
-			// El PNG tiene fondo blanco — multiply lo elimina sobre fondo blanco
+			max-width: 320px;
+			// PNG fondo blanco — multiply lo elimina sobre fondo blanco
 			mix-blend-mode: multiply;
-		}
-
-		.dp-why__flecha-img {
-			width: 80px;
-			margin-top: 8px;
-			margin-left: 20px;
-			// La flecha es blanca/oscura sobre fondo blanco
-			// invert la hace negra para que se vea
-			filter: invert(1);
-			opacity: 0.7;
 		}
 	}
 
 	// -------------------------------------------------------------------------
 	// Se você não está no Brasil
-	// Layout: [foto izq] [caja negra der]
+	// Layout: [foto izq col-5] [caja negra der col-7]
+	// Sección limpia sin overlap con dp-why
 	// -------------------------------------------------------------------------
 	.dp-highlight {
+		// sin margin ni padding extra — la sección empieza limpia
+		.dp-highlight__photo-col {
+			padding: 0;
+		}
+
 		.dp-highlight__photo {
 			width: 100%;
 			height: 100%;
-			min-height: 360px;
+			min-height: 400px;
 			object-fit: cover;
+			object-position: center;
 			display: block;
 		}
 
@@ -238,12 +231,13 @@ body:has(.dp-page) {
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
-			padding: 48px 48px;
+			padding: 48px 56px;
 		}
 
+		// Título fiel al PDF: mismo peso que en el PDF, no gigante
 		.dp-highlight__title {
 			font-family: $dp-font-body;
-			font-size: clamp(24px, 3vw, 36px);
+			font-size: clamp(32px, 4vw, 52px);
 			font-weight: 700 !important;
 			line-height: 1.2;
 			color: $dp-white !important;
@@ -253,7 +247,7 @@ body:has(.dp-page) {
 
 		.dp-highlight__body {
 			font-family: $dp-font-body;
-			font-size: 15px;
+			font-size: 13px;
 			line-height: 1.7;
 			color: $dp-gray-mid;
 			font-weight: 400 !important;
@@ -262,6 +256,7 @@ body:has(.dp-page) {
 			em {
 				font-style: italic;
 				color: $dp-white;
+				font-weight: 700 !important;
 			}
 		}
 	}
