@@ -13,7 +13,8 @@
         <field name="arch" type="xml">
             <t t-name="design_pipa_theme.dp_landing_view">
                 <t t-call="website.layout">
-                    <div id="wrap" class="dp-page">
+                    <div id="wrap">
+                        <div class="dp-page">
 
                         <!-- NAV INTERNA FIJA -->
                         <nav class="dp-subnav">
@@ -230,6 +231,7 @@
 
                         </div><!-- //#assessoria -->
 
+                    </div><!-- //.dp-page -->
                     </div><!-- //#wrap -->
                 </t>
             </t>
