@@ -6,17 +6,20 @@
         ====================================================================
         LISTADO DEL BLOG — Encabezado editorial
         ====================================================================
-        Agrega el hero editorial propio de Oscilar al inicio del wrap
-        de la página de listado del blog.
+        TEMPORALMENTE COMENTADO: el template ID website_blog.latest_blogs
+        no existe en esta instalación de Odoo 18.
 
-        inherit_id: website_blog.latest_blogs
-        VERIFICAR en: Ajustes → Técnico → Vistas → buscar "latest_blogs"
+        Para encontrar el ID correcto, ejecutar en el shell de Odoo:
+            templates = env['ir.ui.view'].search_read(
+                [('type', '=', 'qweb'), ('key', 'like', 'website_blog')],
+                ['key', 'name'], order='key asc'
+            )
+            for t in templates: print(t['key'])
 
-        XPath: //div[@id='wrap'] — posición: prepend
-        Justificación: #wrap es el contenedor raíz de toda página de Odoo
-        website. Es el XPath más estable posible.
+        Una vez confirmado el ID correcto, descomentar y actualizar
+        el inherit_id con el valor real.
         ====================================================================
-        -->
+
         <template
             id="oscilar_blog_listing_header"
             inherit_id="website_blog.latest_blogs"
@@ -37,29 +40,16 @@
                 </div>
             </xpath>
         </template>
+        -->
 
 
         <!--
         ====================================================================
         POST INDIVIDUAL — Encabezado editorial
         ====================================================================
-        Agrega el hero editorial (kicker naranja, título en Lora,
-        subtítulo en cursiva, barra naranja, meta) al inicio del post.
-
         inherit_id: website_blog.blog_post_complete
-        VERIFICAR en: Ajustes → Técnico → Vistas → buscar "blog_post_complete"
-
-        Variables disponibles en el template de Odoo:
-        - blog_post        → registro blog.post
-        - blog_post.name   → título
-        - blog_post.subtitle → subtítulo
-        - blog_post.tag_ids  → tags (many2many blog.tag)
-        - blog_post.author_id → autor (res.partner)
-        - blog_post.post_date → fecha de publicación
-
-        NOTA: Si el título del post aparece duplicado (el de Odoo + el nuestro),
-        la regla CSS `.o_wblog_post_title { display: none !important }` ya
-        incluida en theme.scss se encarga de ocultar el de Odoo.
+        NOTA: si este ID tampoco existe en v18, comentar de la misma forma
+        y reportar el error para corregir.
         ====================================================================
         -->
         <template
@@ -71,10 +61,6 @@
                 <div class="oscilar-post-hero">
                     <div class="container">
 
-                        <!--
-                            Kicker: muestra los tags del post separados por coma.
-                            Si no hay tags, muestra "Reflexión" como fallback.
-                        -->
                         <p class="oscilar-kicker">
                             <t t-if="blog_post.tag_ids">
                                 <t t-foreach="blog_post.tag_ids" t-as="tag">
@@ -85,22 +71,18 @@
                             <t t-else="">Reflexión</t>
                         </p>
 
-                        <!-- Título principal del post -->
                         <h1 class="oscilar-post-title">
                             <t t-esc="blog_post.name"/>
                         </h1>
 
-                        <!-- Subtítulo (campo subtitle de blog.post) -->
                         <t t-if="blog_post.subtitle">
                             <p class="oscilar-post-subtitle">
                                 <t t-esc="blog_post.subtitle"/>
                             </p>
                         </t>
 
-                        <!-- Barra naranja separadora -->
                         <div class="oscilar-accent-bar"></div>
 
-                        <!-- Meta: autor y fecha -->
                         <p class="oscilar-post-meta">
                             <t t-esc="blog_post.author_id.name"/>
                             <t t-if="blog_post.post_date">
