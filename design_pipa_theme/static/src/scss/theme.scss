@@ -175,98 +175,78 @@ body:has(.dp-page) {
 			display: block;
 		}
 
-		// Firma: flecha + agus correa PNG — debajo de la foto
+		// Firma: flecha + agus correa CEO — debajo de la foto
+		// Ambos PNG con fondo negro → mix-blend-mode: screen los hace transparentes
 		.dp-why__firma {
 			display: flex;
 			align-items: flex-start;
-			padding: 8px 0 0 8px;
+			background: $dp-white;
+			padding: 12px 0 0 8px;
 		}
 
 		.dp-why__flecha-img {
-			width: 60px;
-			// flecha blanca sobre fondo blanco → invert para hacerla negra
-			filter: invert(1);
-			opacity: 0.6;
-			margin-top: 8px;
+			width: 56px;
+			mix-blend-mode: screen;
 			flex-shrink: 0;
+			margin-top: 12px;
 		}
 
 		.dp-why__agus-img {
-			width: 200px;
-			// PNG fondo negro → screen lo hace transparente sobre blanco
-			mix-blend-mode: multiply;
-			filter: invert(1);
-			opacity: 0.75;
+			width: 210px;
+			mix-blend-mode: screen;
 		}
 	}
 
 	// -------------------------------------------------------------------------
 	// Se você não está no Brasil
-	// Col izq: foto cuadriculada rectangular (altura completa)
-	// Col der arriba: blanco con cita PNG sobresaliendo desde la izq
-	// Col der abajo: caja negra con título + texto
+	// Contenedor relativo con foto izq (no full width)
+	// Cita PNG superpuesta arriba derecha
+	// Caja negra superpuesta abajo derecha sobre la foto
 	// -------------------------------------------------------------------------
 	.dp-highlight {
+		background: $dp-white;
+		padding: 0;
 
-		.dp-highlight__row {
-			min-height: 480px;
-		}
-
-		// Col izq: foto ocupa toda la altura
-		.dp-highlight__left {
-			padding: 0;
+		.dp-highlight__wrap {
 			position: relative;
+			// padding derecho para que la foto no llegue al borde
+			padding-right: 15%;
+			min-height: 480px;
 		}
 
 		.dp-highlight__photo {
-			width: 100%;
-			height: 100%;
-			min-height: 480px;
+			width: 65%;
+			height: 480px;
 			object-fit: cover;
 			object-position: center;
 			display: block;
 		}
 
-		// Col der: flex column, arriba blanco, abajo negro
-		.dp-highlight__right {
-			display: flex;
-			flex-direction: column;
-			padding: 0;
-		}
-
-		// Zona blanca superior — ocupa aprox 45% de la altura
-		.dp-highlight__white {
-			background: $dp-white;
-			flex: 1;
-			position: relative;
-			min-height: 200px;
-			display: flex;
-			align-items: flex-end;
-			padding: 24px 32px;
-		}
-
-		// Cita PNG sobresaliendo desde la izquierda
+		// Cita PNG — superpuesta arriba derecha, sobresale desde la foto
 		.dp-highlight__cita {
-			width: 110%;
-			max-width: 360px;
-			margin-left: -60px; // sobresale hacia la foto
+			position: absolute;
+			top: 20px;
+			right: 5%;
+			width: 42%;
 			mix-blend-mode: multiply;
+			z-index: 2;
 		}
 
-		// Caja negra inferior
+		// Caja negra — superpuesta abajo, cubre parte derecha de la foto
 		.dp-highlight__box {
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			width: 52%;
 			background: $dp-black;
 			color: $dp-white;
-			padding: 40px 40px;
-			flex: 1;
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
+			padding: 36px 40px;
+			z-index: 2;
 		}
 
 		.dp-highlight__title {
 			font-family: $dp-font-body;
-			font-size: clamp(28px, 3.5vw, 44px);
+			font-size: clamp(22px, 3vw, 36px);
 			font-weight: 700 !important;
 			line-height: 1.1;
 			color: $dp-white !important;
