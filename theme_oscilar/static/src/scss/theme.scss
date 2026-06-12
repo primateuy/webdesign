@@ -1,0 +1,623 @@
+/*
+ * theme_oscilar/static/src/scss/theme.scss
+ *
+ * Estilos visuales del tema Oscilar para Existir.
+ * Organización: custom properties → navbar → footer →
+ *               blog listing → blog post → utilidades globales.
+ */
+
+// ─── CSS CUSTOM PROPERTIES ───────────────────────────────────────────────────
+:root {
+    --oscilar-navy:   #0D2137;
+    --oscilar-orange: #E8621A;
+    --oscilar-orange-dark: #C44E10;
+    --oscilar-cream:  #FBF6EF;
+    --oscilar-ink:    #2D1F0E;
+    --oscilar-copper: #C4996A;
+    --oscilar-fog:    #8A9BAD;
+    --oscilar-line:   #E8E0D5;
+}
+
+
+// ─── HEADER / NAVBAR ─────────────────────────────────────────────────────────
+#wrapwrap > header,
+header.o_header_standard,
+header.o_header_affixed {
+    background-color: var(--oscilar-navy) !important;
+
+    .navbar {
+        background-color: var(--oscilar-navy) !important;
+    }
+
+    // Logo: mantener altura razonable
+    .navbar-brand {
+        img {
+            max-height: 44px;
+            height: 44px;
+        }
+    }
+
+    // Links de navegación
+    .nav-link,
+    .navbar-nav .nav-link,
+    .o_menu_sections > li > a,
+    .o_menu_sections > li > span {
+        color: rgba(255, 255, 255, 0.85) !important;
+        font-family: 'Inter', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        letter-spacing: 0.02em;
+        transition: color 0.15s ease;
+
+        &:hover,
+        &:focus,
+        &.active {
+            color: var(--oscilar-orange) !important;
+        }
+    }
+
+    // Dropdown
+    .dropdown-menu {
+        background-color: #0a1a2e;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 6px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+
+        .dropdown-item {
+            color: rgba(255, 255, 255, 0.8) !important;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            padding: 8px 16px;
+
+            &:hover,
+            &:focus {
+                background-color: rgba(232, 98, 26, 0.12);
+                color: var(--oscilar-orange) !important;
+            }
+        }
+
+        .dropdown-divider {
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+    }
+
+    // Botón CTA (Contáctenos, etc.)
+    .btn-primary,
+    .o_btn_cta,
+    a.btn.btn-primary {
+        background-color: var(--oscilar-orange) !important;
+        border-color: var(--oscilar-orange) !important;
+        color: #fff !important;
+        font-family: 'Inter', sans-serif;
+        font-size: 13px;
+        font-weight: 500;
+        padding: 7px 20px;
+        border-radius: 4px;
+        transition: background-color 0.15s ease, border-color 0.15s ease;
+
+        &:hover,
+        &:focus {
+            background-color: var(--oscilar-orange-dark) !important;
+            border-color: var(--oscilar-orange-dark) !important;
+        }
+    }
+
+    // Icono hamburger en mobile
+    .navbar-toggler {
+        border-color: rgba(255, 255, 255, 0.3);
+        color: rgba(255, 255, 255, 0.85);
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.85%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+    }
+}
+
+
+// ─── FOOTER ──────────────────────────────────────────────────────────────────
+#wrapwrap > footer,
+footer,
+#footer {
+    background-color: var(--oscilar-navy) !important;
+    color: rgba(255, 255, 255, 0.65) !important;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+
+    p, span, li, div {
+        color: rgba(255, 255, 255, 0.65) !important;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        color: rgba(255, 255, 255, 0.9) !important;
+        font-family: 'Lora', serif;
+    }
+
+    a {
+        color: rgba(255, 255, 255, 0.65) !important;
+        text-decoration: none;
+        transition: color 0.15s ease;
+
+        &:hover {
+            color: var(--oscilar-orange) !important;
+        }
+    }
+
+    hr {
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    // Copyright
+    .o_footer_copyright {
+        color: rgba(255, 255, 255, 0.35) !important;
+        font-size: 12px;
+
+        a {
+            color: rgba(255, 255, 255, 0.35) !important;
+
+            &:hover {
+                color: var(--oscilar-orange) !important;
+            }
+        }
+    }
+}
+
+
+// ─── HERO DEL LISTADO DE BLOG ────────────────────────────────────────────────
+.oscilar-blog-hero {
+    background-color: var(--oscilar-navy);
+    padding: 72px 0 56px;
+
+    .oscilar-kicker {
+        font-family: 'Inter', sans-serif;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--oscilar-orange);
+        margin-bottom: 16px;
+    }
+
+    .oscilar-blog-title {
+        font-family: 'Lora', serif;
+        font-size: clamp(28px, 4vw, 42px);
+        font-weight: 400;
+        color: #fff;
+        line-height: 1.2;
+        margin-bottom: 0;
+    }
+
+    .oscilar-accent-bar {
+        width: 56px;
+        height: 3px;
+        background-color: var(--oscilar-orange);
+        margin: 20px 0;
+    }
+
+    .oscilar-blog-subtitle {
+        font-family: 'Lora', serif;
+        font-style: italic;
+        font-size: 16px;
+        color: var(--oscilar-fog);
+        margin-bottom: 0;
+        max-width: 520px;
+    }
+}
+
+
+// ─── LISTADO DE POSTS ─────────────────────────────────────────────────────────
+
+// Área general del listado
+.o_blog_posts_loop,
+#o_wblog_posts_loop {
+    background-color: var(--oscilar-cream);
+    padding: 48px 0 64px;
+}
+
+// Ocultar elements de Odoo que no queremos mostrar en la cabecera del blog
+// (el tema ya tiene su propio hero editorial)
+.o_wblog_read_fullname {
+    display: none !important;
+}
+
+// Card de cada post
+.o_blog_post {
+    background-color: #fff;
+    border: 1px solid var(--oscilar-line) !important;
+    border-radius: 8px !important;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    height: 100%;
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 32px rgba(13, 33, 55, 0.11);
+
+        .o_blog_post_name a,
+        h2 a, h3 a {
+            color: var(--oscilar-orange) !important;
+        }
+    }
+
+    // Imagen de portada
+    .o_record_cover_container {
+        border-radius: 0 !important;
+        min-height: 180px;
+        background-color: var(--oscilar-navy);
+    }
+
+    // Zona de texto de la card
+    .o_blog_post_content,
+    .o_blog_post_info,
+    .card-body {
+        padding: 24px 28px !important;
+    }
+
+    // Tag / categoría
+    .badge,
+    .o_blog_post_tag_badge {
+        background-color: transparent !important;
+        color: var(--oscilar-orange) !important;
+        border: none !important;
+        font-family: 'Inter', sans-serif !important;
+        font-size: 10px !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        padding: 0 !important;
+        margin-bottom: 10px;
+        display: inline-block;
+    }
+
+    // Título del post
+    .o_blog_post_name,
+    h2, h3 {
+        font-family: 'Lora', serif !important;
+        font-size: 19px !important;
+        font-weight: 400 !important;
+        color: var(--oscilar-navy) !important;
+        line-height: 1.3 !important;
+        margin-bottom: 10px !important;
+
+        a {
+            color: var(--oscilar-navy) !important;
+            text-decoration: none !important;
+            transition: color 0.15s ease;
+
+            &:hover {
+                color: var(--oscilar-orange) !important;
+            }
+        }
+    }
+
+    // Subtítulo / extracto
+    .o_blog_post_teaser,
+    .o_blog_post_subtitle {
+        font-family: 'Lora', serif !important;
+        font-style: italic !important;
+        font-size: 14px !important;
+        color: var(--oscilar-fog) !important;
+        line-height: 1.6 !important;
+        margin-bottom: 16px !important;
+    }
+
+    // Meta: fecha y autor
+    .o_blog_post_date,
+    .o_blog_post_author,
+    .blog_date_time,
+    small.text-muted {
+        font-family: 'Inter', sans-serif !important;
+        font-size: 11px !important;
+        color: var(--oscilar-fog) !important;
+        margin-top: 16px !important;
+        padding-top: 14px !important;
+        border-top: 1px solid var(--oscilar-line) !important;
+        display: block;
+    }
+
+    // Botón "leer más"
+    .o_blog_post_read_more,
+    a.o_blog_post_read_more {
+        color: var(--oscilar-orange) !important;
+        font-family: 'Inter', sans-serif;
+        font-size: 13px;
+        text-decoration: none;
+        border: 1px solid var(--oscilar-orange);
+        padding: 6px 16px;
+        border-radius: 4px;
+        display: inline-block;
+        transition: all 0.15s ease;
+
+        &:hover {
+            background-color: var(--oscilar-orange) !important;
+            color: #fff !important;
+        }
+    }
+}
+
+// Paginación
+.o_wblog_pager,
+ul.pagination {
+    font-family: 'Inter', sans-serif;
+    margin-top: 32px;
+
+    .page-link {
+        color: var(--oscilar-navy);
+        border-color: var(--oscilar-line);
+        background-color: #fff;
+        transition: all 0.15s ease;
+
+        &:hover {
+            color: var(--oscilar-orange);
+            border-color: var(--oscilar-orange);
+            background-color: rgba(232, 98, 26, 0.06);
+        }
+    }
+
+    .page-item.active .page-link {
+        background-color: var(--oscilar-orange);
+        border-color: var(--oscilar-orange);
+        color: #fff;
+    }
+}
+
+// Sidebar del blog (tags, archivos)
+.o_blog_sidebar {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+
+    .o_blog_tag_btn,
+    .badge {
+        background-color: rgba(232, 98, 26, 0.08) !important;
+        color: var(--oscilar-orange) !important;
+        border: 1px solid rgba(232, 98, 26, 0.2) !important;
+        border-radius: 4px;
+        font-size: 11px;
+        margin: 2px;
+
+        &:hover {
+            background-color: var(--oscilar-orange) !important;
+            color: #fff !important;
+        }
+    }
+
+    h5, h6 {
+        font-family: 'Lora', serif;
+        color: var(--oscilar-navy);
+        font-size: 15px;
+        margin-bottom: 12px;
+    }
+}
+
+
+// ─── HERO DEL POST INDIVIDUAL ────────────────────────────────────────────────
+.oscilar-post-hero {
+    background-color: var(--oscilar-cream);
+    padding: 64px 0 40px;
+    border-bottom: 1px solid var(--oscilar-line);
+
+    .oscilar-kicker {
+        font-family: 'Inter', sans-serif;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--oscilar-orange);
+        margin-bottom: 20px;
+    }
+
+    .oscilar-post-title {
+        font-family: 'Lora', serif;
+        font-size: clamp(26px, 3.5vw, 38px);
+        font-weight: 400;
+        color: var(--oscilar-navy);
+        line-height: 1.25;
+        margin-bottom: 14px;
+    }
+
+    .oscilar-post-subtitle {
+        font-family: 'Lora', serif;
+        font-style: italic;
+        font-size: 18px;
+        color: #4A3728;
+        line-height: 1.55;
+        margin-bottom: 0;
+        max-width: 600px;
+    }
+
+    .oscilar-accent-bar {
+        width: 48px;
+        height: 3px;
+        background-color: var(--oscilar-orange);
+        margin: 24px 0;
+    }
+
+    .oscilar-post-meta {
+        font-family: 'Inter', sans-serif;
+        font-size: 12px;
+        color: var(--oscilar-fog);
+        margin-bottom: 0;
+    }
+}
+
+
+// ─── CUERPO DEL POST INDIVIDUAL ──────────────────────────────────────────────
+.o_wblog_post_page {
+    background-color: var(--oscilar-cream);
+
+    // Ocultar el cover/header por defecto de Odoo para evitar duplicación
+    // (nuestro hero .oscilar-post-hero lo reemplaza)
+    .o_record_cover_container.o_page_cover {
+        display: none !important;
+    }
+
+    .o_wblog_post_title {
+        display: none !important;
+    }
+}
+
+// Contenido del artículo
+.o_wblog_post_page article,
+.o_wblog_post_page .o_blog_post_content {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+
+    font-family: 'Lora', serif;
+    font-size: 17px;
+    line-height: 1.82;
+    color: var(--oscilar-ink);
+
+    // Encabezados dentro del contenido
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Lora', serif;
+        color: var(--oscilar-navy);
+        margin-top: 2.2rem;
+        margin-bottom: 0.9rem;
+        line-height: 1.25;
+    }
+
+    h2 { font-size: 26px; font-weight: 500; }
+    h3 { font-size: 21px; font-weight: 500; }
+    h4 { font-size: 18px; font-weight: 500; }
+
+    // Párrafos
+    p { margin-bottom: 1.35em; }
+
+    // Links
+    a {
+        color: var(--oscilar-orange);
+        text-decoration: underline;
+        text-underline-offset: 2px;
+
+        &:hover {
+            color: var(--oscilar-orange-dark);
+        }
+    }
+
+    // Citas (estilo pullquote Oscilar)
+    blockquote {
+        border-left: 3px solid var(--oscilar-orange) !important;
+        border-top: none !important;
+        border-right: none !important;
+        border-bottom: none !important;
+        background: none !important;
+        padding: 6px 0 6px 22px !important;
+        margin: 32px 0 !important;
+        border-radius: 0 !important;
+
+        p {
+            font-style: italic;
+            font-size: 19px;
+            color: var(--oscilar-navy);
+            margin-bottom: 0;
+        }
+    }
+
+    // Imágenes
+    img {
+        border-radius: 6px;
+        max-width: 100%;
+        height: auto;
+    }
+
+    // Separador
+    hr {
+        border-color: var(--oscilar-line);
+        margin: 2.5rem 0;
+    }
+
+    // Listas
+    ul, ol {
+        padding-left: 1.5rem;
+
+        li {
+            margin-bottom: 0.5em;
+        }
+    }
+
+    // Código
+    code {
+        font-size: 14px;
+        background-color: rgba(13, 33, 55, 0.06);
+        padding: 2px 6px;
+        border-radius: 3px;
+        color: var(--oscilar-navy);
+    }
+
+    pre {
+        background-color: var(--oscilar-navy);
+        color: rgba(255, 255, 255, 0.85);
+        padding: 20px 24px;
+        border-radius: 6px;
+        overflow-x: auto;
+
+        code {
+            background: none;
+            color: inherit;
+            padding: 0;
+        }
+    }
+}
+
+// Navegación entre posts (anterior / siguiente)
+.o_wblog_post_page .o_wblog_post_nav {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 24px 48px;
+    font-family: 'Inter', sans-serif;
+
+    a {
+        color: var(--oscilar-orange);
+        text-decoration: none;
+        font-size: 13px;
+
+        &:hover {
+            color: var(--oscilar-orange-dark);
+        }
+    }
+}
+
+// Comentarios (Discuss)
+.o_wblog_post_page .o_portal_chatter {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+}
+
+
+// ─── BOTONES GLOBALES ─────────────────────────────────────────────────────────
+.btn-primary {
+    background-color: var(--oscilar-orange) !important;
+    border-color: var(--oscilar-orange) !important;
+    color: #fff !important;
+    font-family: 'Inter', sans-serif;
+
+    &:hover, &:focus, &:active {
+        background-color: var(--oscilar-orange-dark) !important;
+        border-color: var(--oscilar-orange-dark) !important;
+        color: #fff !important;
+    }
+}
+
+.btn-outline-primary {
+    color: var(--oscilar-orange) !important;
+    border-color: var(--oscilar-orange) !important;
+
+    &:hover {
+        background-color: var(--oscilar-orange) !important;
+        color: #fff !important;
+    }
+}
+
+
+// ─── FONDO GENERAL ───────────────────────────────────────────────────────────
+body {
+    background-color: var(--oscilar-cream);
+}
+
+// Links globales (fuera del contenido)
+a:not(.btn):not(.nav-link):not(.dropdown-item) {
+    color: var(--oscilar-orange);
+}

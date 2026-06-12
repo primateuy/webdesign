@@ -1,0 +1,42 @@
+/*
+ * theme_oscilar/static/src/scss/primary_variables.scss
+ *
+ * Variables que se cargan ANTES que Bootstrap y los estilos de Odoo.
+ * Usar siempre !default para que Odoo pueda sobrescribir si es necesario.
+ */
+
+// ─── PALETA DE COLORES OSCILAR ────────────────────────────────────────────────
+// Slots de color del website configurator de Odoo
+$o-color-1: #E8621A !default;  // Naranja — acento principal
+$o-color-2: #0D2137 !default;  // Navy — base
+$o-color-3: #FBF6EF !default;  // Crema — fondo
+$o-color-4: #C4996A !default;  // Cobre — acento secundario
+$o-color-5: #8A9BAD !default;  // Niebla — texto secundario
+
+// ─── VARIABLES BOOTSTRAP ─────────────────────────────────────────────────────
+$primary:            #E8621A !default;
+$secondary:          #0D2137 !default;
+$body-bg:            #FBF6EF !default;
+$body-color:         #2D1F0E !default;
+$headings-color:     #0D2137 !default;
+$link-color:         #E8621A !default;
+$link-hover-color:   #C44E10 !default;
+$border-color:       #E8E0D5 !default;
+
+// ─── TIPOGRAFÍA ───────────────────────────────────────────────────────────────
+// Lora para editorial, Inter/sans para UI funcional
+$font-family-sans-serif: 'Inter', 'Liberation Sans', Arial, sans-serif !default;
+$headings-font-family:   'Lora', Georgia, 'Times New Roman', serif !default;
+$font-size-base:         1rem !default;      // 16px
+$line-height-base:       1.75 !default;
+$headings-line-height:   1.2 !default;
+
+// ─── BOTONES ─────────────────────────────────────────────────────────────────
+$btn-border-radius:      4px !default;
+$btn-font-family:        'Inter', sans-serif !default;
+$btn-font-size:          13px !default;
+
+// ─── BORDES Y REDONDEO ────────────────────────────────────────────────────────
+$border-radius:          6px !default;
+$border-radius-lg:       8px !default;
+$card-border-radius:     8px !default;

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!--
+        ====================================================================
+        LISTADO DEL BLOG — Encabezado editorial
+        ====================================================================
+        Agrega el hero editorial propio de Oscilar al inicio del wrap
+        de la página de listado del blog.
+
+        inherit_id: website_blog.latest_blogs
+        VERIFICAR en: Ajustes → Técnico → Vistas → buscar "latest_blogs"
+
+        XPath: //div[@id='wrap'] — posición: prepend
+        Justificación: #wrap es el contenedor raíz de toda página de Odoo
+        website. Es el XPath más estable posible.
+        ====================================================================
+        -->
+        <template
+            id="oscilar_blog_listing_header"
+            inherit_id="website_blog.latest_blogs"
+            name="Oscilar - Encabezado Listado Blog"
+        >
+            <xpath expr="//div[@id='wrap']" position="prepend">
+                <div class="oscilar-blog-hero">
+                    <div class="container">
+                        <p class="oscilar-kicker">Oscilar para Existir</p>
+                        <h1 class="oscilar-blog-title">
+                            El Mundo Después del Mapa
+                        </h1>
+                        <div class="oscilar-accent-bar"></div>
+                        <p class="oscilar-blog-subtitle">
+                            Reflexiones sobre la vida, el trabajo y la incertidumbre.
+                        </p>
+                    </div>
+                </div>
+            </xpath>
+        </template>
+
+
+        <!--
+        ====================================================================
+        POST INDIVIDUAL — Encabezado editorial
+        ====================================================================
+        Agrega el hero editorial (kicker naranja, título en Lora,
+        subtítulo en cursiva, barra naranja, meta) al inicio del post.
+
+        inherit_id: website_blog.blog_post_complete
+        VERIFICAR en: Ajustes → Técnico → Vistas → buscar "blog_post_complete"
+
+        Variables disponibles en el template de Odoo:
+        - blog_post        → registro blog.post
+        - blog_post.name   → título
+        - blog_post.subtitle → subtítulo
+        - blog_post.tag_ids  → tags (many2many blog.tag)
+        - blog_post.author_id → autor (res.partner)
+        - blog_post.post_date → fecha de publicación
+
+        NOTA: Si el título del post aparece duplicado (el de Odoo + el nuestro),
+        la regla CSS `.o_wblog_post_title { display: none !important }` ya
+        incluida en theme.scss se encarga de ocultar el de Odoo.
+        ====================================================================
+        -->
+        <template
+            id="oscilar_blog_post_hero"
+            inherit_id="website_blog.blog_post_complete"
+            name="Oscilar - Header Editorial Post"
+        >
+            <xpath expr="//div[@id='wrap']" position="prepend">
+                <div class="oscilar-post-hero">
+                    <div class="container">
+
+                        <!--
+                            Kicker: muestra los tags del post separados por coma.
+                            Si no hay tags, muestra "Reflexión" como fallback.
+                        -->
+                        <p class="oscilar-kicker">
+                            <t t-if="blog_post.tag_ids">
+                                <t t-foreach="blog_post.tag_ids" t-as="tag">
+                                    <t t-esc="tag.name"/>
+                                    <t t-if="not tag_last"> · </t>
+                                </t>
+                            </t>
+                            <t t-else="">Reflexión</t>
+                        </p>
+
+                        <!-- Título principal del post -->
+                        <h1 class="oscilar-post-title">
+                            <t t-esc="blog_post.name"/>
+                        </h1>
+
+                        <!-- Subtítulo (campo subtitle de blog.post) -->
+                        <t t-if="blog_post.subtitle">
+                            <p class="oscilar-post-subtitle">
+                                <t t-esc="blog_post.subtitle"/>
+                            </p>
+                        </t>
+
+                        <!-- Barra naranja separadora -->
+                        <div class="oscilar-accent-bar"></div>
+
+                        <!-- Meta: autor y fecha -->
+                        <p class="oscilar-post-meta">
+                            <t t-esc="blog_post.author_id.name"/>
+                            <t t-if="blog_post.post_date">
+                                <span> · </span>
+                                <span
+                                    t-field="blog_post.post_date"
+                                    t-options='{"widget": "date"}'
+                                />
+                            </t>
+                        </p>
+
+                    </div>
+                </div>
+            </xpath>
+        </template>
+
+    </data>
+</odoo>

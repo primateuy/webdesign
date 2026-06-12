@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!--
+            Agregar Google Fonts al head de todas las páginas del sitio.
+            Se heredan de web.layout para asegurar que carguen en
+            el layout base antes que cualquier otro CSS.
+
+            NOTA: Si web.layout no tiene el XPath //head disponible en este
+            entorno, usar inherit_id="website.layout" con el mismo XPath.
+        -->
+        <template
+            id="oscilar_google_fonts"
+            inherit_id="web.layout"
+            name="Oscilar - Google Fonts"
+        >
+            <xpath expr="//head" position="inside">
+                <link rel="preconnect" href="https://fonts.googleapis.com"/>
+                <link
+                    rel="preconnect"
+                    href="https://fonts.gstatic.com"
+                    crossorigin=""
+                />
+                <link
+                    href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&amp;family=Inter:wght@400;500&amp;display=swap"
+                    rel="stylesheet"
+                />
+            </xpath>
+        </template>
+    </data>
+</odoo>
