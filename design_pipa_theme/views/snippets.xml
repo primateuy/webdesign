@@ -8,15 +8,10 @@
         <field name="arch" type="xml">
             <t t-name="design_pipa_theme.dp_landing_view">
                 <t t-call="website.layout">
-                    <t t-set="head">
-                        <link rel="preconnect" href="https://fonts.googleapis.com"/>
-                        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
-                        <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;800&amp;family=Inter:wght@400;700&amp;display=swap" rel="stylesheet"/>
-                    </t>
                     <div id="wrap">
                         <div class="dp-page">
 
-                            <!-- NAV INTERNA STICKY -->
+                            <!-- NAV STICKY -->
                             <nav class="dp-subnav">
                                 <div class="dp-subnav__inner">
                                     <a href="#inicio">Sobre o Estúdio</a>
@@ -25,36 +20,29 @@
                                 </div>
                             </nav>
 
-                            <!-- =============================================
-                                 INICIO: Hero + Por qué + Destaque
-                            ============================================= -->
+                            <!-- ============================================
+                                 #INICIO: Hero + Por qué + Destaque
+                            ============================================ -->
                             <div id="inicio">
 
                                 <!-- HERO -->
                                 <section class="dp-hero">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-lg-8">
-                                                <p class="dp-hero__eyebrow">
-                                                    À mais de 12 anos com base no Paraíso da Praia da Pipa, RN — Brasil
-                                                </p>
-                                                <h1 class="dp-hero__title">
-                                                    Comunicação<br/>
-                                                    Design<br/>
-                                                    Produção Gráfica
-                                                </h1>
-                                                <a href="#produtos-servicos" class="dp-hero__cta">
-                                                    Clique e conheça <strong>o que podemos fazer por você</strong>
-                                                </a>
-                                            </div>
-                                        </div>
+                                    <div>
+                                        <p class="dp-hero__eyebrow">
+                                            À mais de 12 anos com base no Paraíso da Praia da Pipa, RN — Brasil
+                                        </p>
+                                        <h1 class="dp-hero__title">
+                                            Comunicação<br/>
+                                            Design<br/>
+                                            Produção Gráfica
+                                        </h1>
+                                        <a href="#produtos-servicos" class="dp-hero__cta">
+                                            Clique e conheça <strong>o que podemos fazer por você</strong>
+                                        </a>
                                     </div>
                                 </section>
 
-                                <!-- POR QUÉ DESIGN PIPA
-                                     Col izq: texto + botón óvalo gris
-                                     Col der: foto Agus + flecha + Agus Correa CEO PNG
-                                -->
+                                <!-- POR QUÉ DESIGN PIPA -->
                                 <section class="dp-why">
                                     <div class="container">
                                         <div class="row align-items-start">
@@ -68,14 +56,16 @@
                                                 <p class="dp-why__body">
                                                     Somos a <strong>única agência</strong> nesta região paradisíaca do litoral nordestino.<br/>
                                                     Morar e construir aqui, seja uma vida ou projetos criativos tem as suas particularidades.<br/>
-                                                    E o que melhor, que pessoas que conhecem a dinâmica, estilo de vida, rotatividade, tendências, público e mais...<br/>
+                                                    E o que melhor, que pessoas que conhecem a dinâmica, estilo de vida,
+                                                    rotatividade, tendências, público e mais ...<br/>
                                                     para acompanhar a jornada da sua marca?
                                                 </p>
+                                                <a href="#assessoria" class="dp-why__cta">Quero saber mais!</a>
                                             </div>
 
-                                            <!-- Col der: foto + flecha + nombre -->
+                                            <!-- Col der: foto + firma -->
                                             <div class="col-lg-7 dp-why__photo-col">
-                                                <img src="/design_pipa_theme/static/src/img/foto_agus_1.jpg"
+                                                <img src="/design_pipa_theme/static/src/img/foto_agus_mapa.jpg"
                                                      alt="Agus Correa — CEO e Designer"
                                                      class="dp-why__photo"/>
                                                 <div class="dp-why__firma">
@@ -92,61 +82,58 @@
                                     </div>
                                 </section>
 
-                                <!-- SE VOCÊ NÃO ESTÁ NO BRASIL
-                                     Col izq: foto cuadriculada rectangular (altura completa)
-                                     Col der arriba: blanco con cita manuscrita sobresaliendo desde la foto
-                                     Col der abajo: caja negra con título grande + texto
-                                -->
+                                <!-- SE VOCÊ NÃO ESTÁ NO BRASIL -->
                                 <section class="dp-highlight">
-                                    <div class="row g-0 mx-0 dp-highlight__row">
-
-                                        <!-- Col izq: foto rectangular -->
-                                        <div class="col-lg-5 dp-highlight__left">
-                                            <img src="/design_pipa_theme/static/src/img/foto_ola_vamos_criar.jpg"
-                                                 alt="Papel cuadriculado Design Pipa"
-                                                 class="dp-highlight__photo"/>
+                                    <!-- Col izq: foto cuadriculada -->
+                                    <div class="dp-highlight__photo-col">
+                                        <img src="/design_pipa_theme/static/src/img/foto_ola_vamos_criar.jpg"
+                                             alt="Ola! Vamos criar?"
+                                             class="dp-highlight__photo"/>
+                                    </div>
+                                    <!-- Col der: blanco+cita arriba / caja negra abajo -->
+                                    <div class="dp-highlight__right">
+                                        <div class="dp-highlight__white">
+                                            <img src="/design_pipa_theme/static/src/img/cita_manuscrita.png"
+                                                 alt="nesta casa delirios criativos"
+                                                 class="dp-highlight__cita"/>
                                         </div>
-
-                                        <!-- Col der: blanco arriba (cita sobresale) + caja negra abajo -->
-                                        <div class="col-lg-7 dp-highlight__right">
-                                            <!-- Zona blanca superior — la cita PNG sobresale desde la izq -->
-                                            <div class="dp-highlight__white">
-                                                <img src="/design_pipa_theme/static/src/img/cita_manuscrita.png"
-                                                     alt="nesta casa delirios criativos, sonhos que viram projetos e a coragem de comunicar, são acolhidos"
-                                                     class="dp-highlight__cita"/>
-                                            </div>
-                                            <!-- Caja negra inferior -->
-                                            <div class="dp-highlight__box">
-                                                <h2 class="dp-highlight__title">
-                                                    SE VOCÊ NÃO ESTÁ<br/>NO BRASIL,
-                                                </h2>
-                                                <p class="dp-highlight__body">
-                                                    Contratar uma equipe com olhar completamente cosmopolita
-                                                    e inspirado no mundo <em>mas com o tempero de Brasil.</em>
-                                                </p>
-                                            </div>
+                                        <div class="dp-highlight__box">
+                                            <h2 class="dp-highlight__title">
+                                                SE VOCÊ NÃO ESTÁ<br/>NO BRASIL,
+                                            </h2>
+                                            <p class="dp-highlight__body">
+                                                Contratar uma equipe com olhar completamente cosmopolita
+                                                e inspirado no mundo <em>mas com o tempero de Brasil.</em>
+                                            </p>
                                         </div>
-
                                     </div>
                                 </section>
 
                             </div><!-- //#inicio -->
 
-                            <!-- =============================================
-                                 PRODUTOS E SERVIÇOS
-                            ============================================= -->
+                            <!-- ============================================
+                                 #PRODUTOS-SERVICOS: Servicios + Grid + Print
+                            ============================================ -->
                             <div id="produtos-servicos">
 
-                                <!-- SERVICIOS
-                                     foto_agus_2 = camisa floral con sombrero
-                                -->
+                                <!-- SERVICIOS -->
                                 <section class="dp-services">
-                                    <div class="container">
+
+                                    <!-- Header negro -->
+                                    <div class="dp-services__header">
+                                        <h2 class="dp-services__header-title">
+                                            sua <strong>assistência criativa</strong><br/>
+                                            começa aqui
+                                        </h2>
+                                        <p class="dp-services__header-sub">
+                                            <em>conheça nosso catálogo</em><strong>de produtos &amp; serviços</strong>
+                                        </p>
+                                    </div>
+
+                                    <!-- Lista + foto -->
+                                    <div class="dp-services__body">
                                         <div class="row align-items-start">
                                             <div class="col-lg-6">
-                                                <p class="dp-services__label">sua assistência criativa começa aqui</p>
-                                                <span class="dp-services__subtitle">conheça nosso catálogo</span>
-                                                <p class="dp-services__title">de produtos &amp; serviços</p>
                                                 <ul class="dp-services__list">
                                                     <li>identidade visual</li>
                                                     <li>logotipos</li>
@@ -159,41 +146,42 @@
                                                     <li>instalação de adesivos</li>
                                                 </ul>
                                             </div>
-                                            <div class="col-lg-6">
-                                                <img src="/design_pipa_theme/static/src/img/foto_agus_2.jpg"
+                                            <div class="col-lg-6" style="padding:0">
+                                                <img src="/design_pipa_theme/static/src/img/foto_agus_sombrero.jpg"
                                                      alt="Design Pipa Servicios"
                                                      class="dp-services__image"/>
                                             </div>
                                         </div>
                                     </div>
+
                                 </section>
 
                                 <!-- PORTFOLIO GRID 4x2 -->
                                 <section class="dp-portfolio">
                                     <div class="dp-portfolio__grid">
                                         <div class="dp-portfolio__item">
-                                            <img src="/design_pipa_theme/static/src/img/portfolio_01.jpg" alt="Portfolio 1"/>
+                                            <img src="/design_pipa_theme/static/src/img/portfolio_vitrine.jpg" alt="Portfolio 1"/>
                                         </div>
                                         <div class="dp-portfolio__item">
-                                            <img src="/design_pipa_theme/static/src/img/portfolio_02.jpg" alt="Portfolio 2"/>
+                                            <img src="/design_pipa_theme/static/src/img/portfolio_stickers.jpg" alt="Portfolio 2"/>
                                         </div>
                                         <div class="dp-portfolio__item">
-                                            <img src="/design_pipa_theme/static/src/img/portfolio_03.jpg" alt="Portfolio 3"/>
+                                            <img src="/design_pipa_theme/static/src/img/portfolio_cardapio.jpg" alt="Portfolio 3"/>
                                         </div>
                                         <div class="dp-portfolio__item">
-                                            <img src="/design_pipa_theme/static/src/img/portfolio_04.jpg" alt="Portfolio 4"/>
+                                            <img src="/design_pipa_theme/static/src/img/portfolio_agus_amarelo.jpg" alt="Portfolio 4"/>
                                         </div>
                                         <div class="dp-portfolio__item">
-                                            <img src="/design_pipa_theme/static/src/img/portfolio_05.jpg" alt="Portfolio 5"/>
+                                            <img src="/design_pipa_theme/static/src/img/portfolio_62.jpg" alt="Portfolio 5"/>
                                         </div>
                                         <div class="dp-portfolio__item">
-                                            <img src="/design_pipa_theme/static/src/img/portfolio_06.jpg" alt="Portfolio 6"/>
+                                            <img src="/design_pipa_theme/static/src/img/portfolio_63.jpg" alt="Portfolio 6"/>
                                         </div>
                                         <div class="dp-portfolio__item">
-                                            <img src="/design_pipa_theme/static/src/img/portfolio_07.jpg" alt="Portfolio 7"/>
+                                            <img src="/design_pipa_theme/static/src/img/portfolio_64.jpg" alt="Portfolio 7"/>
                                         </div>
                                         <div class="dp-portfolio__item">
-                                            <img src="/design_pipa_theme/static/src/img/placeholder_grid.jpg" alt="Portfolio 8"/>
+                                            <img src="/design_pipa_theme/static/src/img/portfolio_tag.jpg" alt="Portfolio 8"/>
                                         </div>
                                     </div>
                                 </section>
@@ -230,43 +218,31 @@
 
                             </div><!-- //#produtos-servicos -->
 
-                            <!-- =============================================
-                                 ASSESSORIA: Brand Manager
-                                 Dos partes:
-                                 1. Banner superior "QUE COMUNICA SUA MARCA?" — grande, con fotos de fondo
-                                 2. Caja inferior color #4f4d45 con BRAND MANAGER + CTA + script
-                            ============================================= -->
+                            <!-- ============================================
+                                 #ASSESSORIA: Brand Manager
+                            ============================================ -->
                             <div id="assessoria">
 
-                                <!-- Parte superior: banner con título grande -->
+                                <!-- Banner con imagen de fondo -->
                                 <div class="dp-bm-banner"
                                      style="background-image: url('/design_pipa_theme/static/src/img/banner_brand_manager.jpg')">
                                     <div class="container">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <h2 class="dp-bm-banner__title">QUE COMUNICA SUA MARCA?</h2>
-                                                <p class="dp-bm-banner__sub">Vamos construir juntos a estratégia definitiva.</p>
-                                            </div>
-                                        </div>
+                                        <h2 class="dp-bm-banner__title">QUE COMUNICA SUA MARCA?</h2>
+                                        <p class="dp-bm-banner__sub">Vamos construir juntos a estratégia definitiva.</p>
                                     </div>
                                 </div>
 
-                                <!-- Parte inferior: caja color #4f4d45 -->
+                                <!-- Caja color #4f4d45 -->
                                 <div class="dp-bm-box">
                                     <div class="container">
-                                        <div class="row justify-content-center">
-                                            <div class="col-lg-8 text-center">
-                                                <h3 class="dp-bm-box__title">BRAND MANAGER</h3>
-                                                <p class="dp-bm-box__subtitle">Assessoria de Comunicação</p>
-                                                <a href="mailto:contato@designpipa.com.br" class="dp-bm-box__cta">
-                                                    Quero saber mais
-                                                </a>
-                                                <!-- PNG con fondo negro — mix-blend-mode:screen lo hace transparente -->
-                                                <img src="/design_pipa_theme/static/src/img/algo_con_esta_letra.png"
-                                                     alt="algo con esta letra"
-                                                     class="dp-bm-box__script"/>
-                                            </div>
-                                        </div>
+                                        <h3 class="dp-bm-box__title">BRAND MANAGER</h3>
+                                        <p class="dp-bm-box__subtitle">Assessoria de Comunicação</p>
+                                        <a href="mailto:contato@designpipa.com.br" class="dp-bm-box__cta">
+                                            Quero saber mais
+                                        </a>
+                                        <img src="/design_pipa_theme/static/src/img/algo_con_esta_letra.png"
+                                             alt="algo con esta letra"
+                                             class="dp-bm-box__script"/>
                                     </div>
                                 </div>
 
@@ -279,6 +255,7 @@
         </field>
     </record>
 
+    <!-- website.page declarado DESPUÉS de ir.ui.view -->
     <record id="dp_landing_page" model="website.page">
         <field name="name">Design Pipa</field>
         <field name="url">/design-pipa</field>
