@@ -72,9 +72,7 @@
                                                     <img src="/design_pipa_theme/static/src/img/flecha.png"
                                                          alt=""
                                                          class="dp-why__flecha-img"/>
-                                                    <img src="/design_pipa_theme/static/src/img/agus_correa_ceo.png"
-                                                         alt="Agus Correa CEO e Designer"
-                                                         class="dp-why__agus-img"/>
+                                                    <p class="dp-why__agus-text">Agus Correa<br/><span>Ceo e Designer.</span></p>
                                                 </div>
                                             </div>
 
@@ -93,9 +91,12 @@
                                     <!-- Col der: blanco+cita arriba / caja negra abajo -->
                                     <div class="dp-highlight__right">
                                         <div class="dp-highlight__white">
-                                            <img src="/design_pipa_theme/static/src/img/cita_manuscrita.png"
-                                                 alt="nesta casa delirios criativos"
-                                                 class="dp-highlight__cita"/>
+                                            <p class="dp-highlight__cita">
+                                                nesta casa delirios criativos,<br/>
+                                                sonhos que viram projetos<br/>
+                                                e a coragem de comunicar,<br/>
+                                                são acolhidos
+                                            </p>
                                         </div>
                                         <div class="dp-highlight__box">
                                             <h2 class="dp-highlight__title">
@@ -156,9 +157,9 @@
 
                                 </section>
 
-                                <!-- PORTFOLIO GRID 4x2 -->
-                                <section class="dp-portfolio">
-                                    <div class="dp-portfolio__grid">
+                                <!-- PORTFOLIO BLOQUE 1: 3 imágenes -->
+                                <section class="dp-portfolio dp-portfolio--3">
+                                    <div class="dp-portfolio__grid dp-portfolio__grid--3">
                                         <div class="dp-portfolio__item">
                                             <img src="/design_pipa_theme/static/src/img/portfolio_vitrine.jpg" alt="Portfolio 1"/>
                                         </div>
@@ -168,6 +169,12 @@
                                         <div class="dp-portfolio__item">
                                             <img src="/design_pipa_theme/static/src/img/portfolio_cardapio.jpg" alt="Portfolio 3"/>
                                         </div>
+                                    </div>
+                                </section>
+
+                                <!-- PORTFOLIO BLOQUE 2: 4 imágenes -->
+                                <section class="dp-portfolio dp-portfolio--4">
+                                    <div class="dp-portfolio__grid dp-portfolio__grid--4">
                                         <div class="dp-portfolio__item">
                                             <img src="/design_pipa_theme/static/src/img/portfolio_agus_amarelo.jpg" alt="Portfolio 4"/>
                                         </div>
@@ -178,10 +185,7 @@
                                             <img src="/design_pipa_theme/static/src/img/portfolio_63.jpg" alt="Portfolio 6"/>
                                         </div>
                                         <div class="dp-portfolio__item">
-                                            <img src="/design_pipa_theme/static/src/img/portfolio_64.jpg" alt="Portfolio 7"/>
-                                        </div>
-                                        <div class="dp-portfolio__item">
-                                            <img src="/design_pipa_theme/static/src/img/portfolio_tag.jpg" alt="Portfolio 8"/>
+                                            <img src="/design_pipa_theme/static/src/img/portfolio_tag.jpg" alt="Portfolio 7"/>
                                         </div>
                                     </div>
                                 </section>
@@ -240,9 +244,7 @@
                                         <a href="mailto:contato@designpipa.com.br" class="dp-bm-box__cta">
                                             Quero saber mais
                                         </a>
-                                        <img src="/design_pipa_theme/static/src/img/algo_con_esta_letra.png"
-                                             alt="algo con esta letra"
-                                             class="dp-bm-box__script"/>
+                                        <p class="dp-bm-box__script">algo con esta letra.</p>
                                     </div>
                                 </div>
 
