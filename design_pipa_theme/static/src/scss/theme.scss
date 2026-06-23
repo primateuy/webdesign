@@ -1,0 +1,526 @@
+// =============================================================================
+// Design Pipa Theme v4 — theme.scss
+// Fuentes: Helvetica + Handflair (todas locales)
+// =============================================================================
+
+@font-face {
+	font-family: 'Helvetica';
+	src: url('/design_pipa_theme/static/src/fonts/Helvetica.ttf') format('truetype');
+	font-weight: 400; font-style: normal;
+}
+@font-face {
+	font-family: 'Helvetica';
+	src: url('/design_pipa_theme/static/src/fonts/HelveticaLight.ttf') format('truetype');
+	font-weight: 300; font-style: normal;
+}
+@font-face {
+	font-family: 'Helvetica';
+	src: url('/design_pipa_theme/static/src/fonts/Helvetica-Bold.ttf') format('truetype');
+	font-weight: 700; font-style: normal;
+}
+@font-face {
+	font-family: 'Helvetica';
+	src: url('/design_pipa_theme/static/src/fonts/Helvetica-Oblique.ttf') format('truetype');
+	font-weight: 400; font-style: italic;
+}
+@font-face {
+	font-family: 'Helvetica';
+	src: url('/design_pipa_theme/static/src/fonts/Helvetica-BoldOblique.ttf') format('truetype');
+	font-weight: 700; font-style: italic;
+}
+@font-face {
+	font-family: 'Handflair';
+	src: url('/design_pipa_theme/static/src/fonts/Handflair.ttf') format('truetype');
+	font-weight: normal; font-style: normal;
+}
+
+$black:   #0a0a0a;
+$white:   #ffffff;
+$gray:    #cccccc;
+$bm:      #4f4d45;
+$hv:      'Helvetica', Arial, sans-serif;
+$hf:      'Handflair', cursive;
+
+// Ocultar header y footer de Odoo en /design-pipa
+body:has(.dp-page) {
+	header#top, footer.o_footer { display: none !important; }
+}
+
+// =============================================================================
+.dp-page {
+	font-family: $hv;
+
+	// NAV
+	.dp-nav {
+		position: sticky;
+		top: 0;
+		z-index: 1000;
+		background: $black;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0 48px;
+		height: 52px;
+
+		.dp-nav__logo {
+			img { height: 28px; filter: invert(1); }
+		}
+
+		.dp-nav__links {
+			display: flex;
+			gap: 40px;
+
+			a {
+				color: $white !important;
+				font-family: $hv;
+				font-size: 11px;
+				font-weight: 400 !important;
+				letter-spacing: 0.14em;
+				text-transform: uppercase;
+				text-decoration: none !important;
+				transition: opacity 0.2s;
+				&:hover { opacity: 0.6; }
+			}
+		}
+	}
+
+	// HERO
+	.dp-hero {
+		background: $black;
+		color: $white;
+		padding: 72px 48px 64px;
+		min-height: 70vh;
+		display: flex;
+		align-items: center;
+
+		&__eyebrow {
+			font-family: $hv;
+			font-size: 11px;
+			font-weight: 400 !important;
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+			color: $gray;
+			margin-bottom: 28px;
+		}
+
+		&__title {
+			font-family: $hv;
+			font-size: clamp(48px, 7vw, 96px);
+			font-weight: 700 !important;
+			line-height: 1;
+			text-transform: uppercase;
+			margin-bottom: 40px;
+			color: $white !important;
+		}
+
+		&__cta {
+			display: inline-block;
+			background: rgba(90,85,78,0.8);
+			border-radius: 40px;
+			color: $white !important;
+			font-family: $hv;
+			font-size: 11px;
+			font-weight: 400 !important;
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+			padding: 10px 28px;
+			text-decoration: none !important;
+			transition: background 0.2s;
+			strong { font-weight: 700 !important; color: $white !important; }
+			&:hover { background: rgba(90,85,78,1); }
+		}
+	}
+
+	// POR QUÉ
+	.dp-why {
+		background: $white;
+		padding: 56px 0;
+
+		&__text-col {
+			padding: 0 40px 0 48px;
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+		}
+
+		&__label {
+			font-size: 11px;
+			font-weight: 700 !important;
+			letter-spacing: 0.14em;
+			text-transform: uppercase;
+			color: $black;
+			margin-bottom: 12px;
+		}
+
+		&__title {
+			font-size: clamp(16px, 1.8vw, 20px);
+			font-weight: 700 !important;
+			line-height: 1.3;
+			margin-bottom: 20px;
+			color: $black !important;
+			text-transform: uppercase;
+		}
+
+		&__body {
+			font-size: 13px;
+			line-height: 1.7;
+			color: #333;
+			margin-bottom: 28px;
+			font-weight: 400 !important;
+			text-align: justify;
+			strong { font-weight: 700 !important; }
+		}
+
+		&__cta {
+			display: inline-block;
+			border: 1px solid $black;
+			color: $black !important;
+			font-size: 11px;
+			font-weight: 400 !important;
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+			padding: 10px 24px;
+			text-decoration: none !important;
+			align-self: flex-start;
+			transition: background 0.2s, color 0.2s;
+			&:hover { background: $black; color: $white !important; }
+		}
+
+		&__photo-col { padding: 0; }
+
+		&__photo {
+			width: 100%;
+			height: 460px;
+			object-fit: cover;
+			object-position: top;
+			display: block;
+		}
+
+		&__firma {
+			display: flex;
+			align-items: flex-start;
+			background: $white;
+			padding: 8px 0 0 8px;
+		}
+
+		&__flecha {
+			width: 52px;
+			filter: invert(1);
+			mix-blend-mode: multiply;
+			flex-shrink: 0;
+			margin-top: 10px;
+		}
+
+		&__agus {
+			font-family: $hf;
+			font-size: 22px;
+			line-height: 1.3;
+			color: $black;
+			margin: 0;
+			font-weight: normal !important;
+			span { font-size: 18px; }
+		}
+	}
+
+	// DESTAQUE
+	.dp-highlight {
+		display: flex;
+		min-height: 460px;
+
+		&__photo-col {
+			width: 45%;
+			flex-shrink: 0;
+			padding: 0;
+		}
+
+		&__photo {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			object-position: center;
+			display: block;
+		}
+
+		&__right {
+			width: 55%;
+			display: flex;
+			flex-direction: column;
+		}
+
+		&__white {
+			background: $white;
+			flex: 1;
+			min-height: 180px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 24px 32px;
+		}
+
+		&__cita {
+			font-family: $hf;
+			font-size: clamp(16px, 1.8vw, 22px);
+			line-height: 1.6;
+			color: $black;
+			text-align: center;
+			margin: 0;
+			font-weight: normal !important;
+		}
+
+		&__box {
+			background: $black;
+			color: $white;
+			padding: 36px 40px;
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+
+		&__title {
+			font-size: clamp(22px, 2.8vw, 36px);
+			font-weight: 700 !important;
+			line-height: 1.15;
+			color: $white !important;
+			margin-bottom: 16px;
+			text-transform: uppercase;
+		}
+
+		&__body {
+			font-size: 13px;
+			line-height: 1.7;
+			color: $gray;
+			font-weight: 400 !important;
+			margin: 0;
+			em { font-style: italic; color: $white; font-weight: 700 !important; }
+		}
+	}
+
+	// SERVICIOS
+	.dp-services {
+
+		&__header {
+			background: $black;
+			padding: 48px 48px 40px;
+		}
+
+		&__header-title {
+			font-size: clamp(28px, 4vw, 52px);
+			font-weight: 400 !important;
+			color: $white !important;
+			line-height: 1.1;
+			margin-bottom: 8px;
+			strong { font-weight: 700 !important; }
+		}
+
+		&__header-sub {
+			font-size: 16px;
+			color: $gray;
+			margin: 0;
+			em { font-style: italic; font-family: $hf; font-size: 20px; color: $gray; }
+			strong { font-weight: 700 !important; color: $white; font-style: normal; }
+		}
+
+		&__body {
+			background: $white;
+			padding: 48px 48px;
+		}
+
+		&__list {
+			list-style: none !important;
+			padding: 0 !important;
+			margin: 0 !important;
+
+			li {
+				font-size: clamp(16px, 1.8vw, 20px);
+				font-weight: 700 !important;
+				padding: 5px 0;
+				color: $black !important;
+				border: none !important;
+				&::before { content: none !important; }
+			}
+		}
+
+		&__image {
+			width: 100%;
+			height: 100%;
+			min-height: 400px;
+			object-fit: cover;
+			display: block;
+		}
+	}
+
+	// PORTFOLIO
+	.dp-portfolio-3 {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 4px;
+		@media (max-width: 768px) { grid-template-columns: repeat(2, 1fr); }
+	}
+
+	.dp-portfolio-4 {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 4px;
+		margin-top: 4px;
+		@media (max-width: 768px) { grid-template-columns: repeat(2, 1fr); }
+	}
+
+	.dp-portfolio-item {
+		aspect-ratio: 1 / 1;
+		overflow: hidden;
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			display: block;
+			transition: transform 0.4s ease;
+			&:hover { transform: scale(1.04); }
+		}
+	}
+
+	// PRODUÇÃO GRÁFICA
+	.dp-print {
+		background: $black;
+		color: $white;
+		padding: 64px 48px;
+
+		&__pretitle {
+			font-family: $hf;
+			font-size: 28px;
+			color: $white !important;
+			display: block;
+			margin-bottom: 0;
+			font-weight: normal !important;
+		}
+
+		&__title {
+			font-size: clamp(56px, 8vw, 96px);
+			font-weight: 700 !important;
+			text-transform: uppercase;
+			line-height: 0.9;
+			margin-bottom: 16px;
+			color: $white !important;
+		}
+
+		&__sub {
+			font-size: 13px;
+			font-weight: 400 !important;
+			color: $gray;
+			margin-bottom: 28px;
+		}
+
+		&__cta {
+			display: inline-block;
+			border: 1px solid $white;
+			color: $white !important;
+			font-size: 11px;
+			font-weight: 400 !important;
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+			padding: 10px 24px;
+			text-decoration: none !important;
+			transition: background 0.2s, color 0.2s;
+			&:hover { background: $white; color: $black !important; }
+		}
+
+		&__script {
+			font-family: $hf;
+			font-size: 28px;
+			color: $gray;
+			margin-top: 24px;
+			display: block;
+			font-weight: normal !important;
+		}
+
+		&__list {
+			list-style: none !important;
+			padding: 0 !important;
+			margin: 0 !important;
+			columns: 2;
+			li {
+				font-size: 15px;
+				font-weight: 400 !important;
+				padding: 4px 0;
+				color: $gray;
+				&::before { content: none !important; }
+			}
+		}
+	}
+
+	// BRAND MANAGER
+	.dp-bm-banner {
+		background-size: cover;
+		background-position: center;
+		position: relative;
+		padding: 80px 48px;
+		&::before {
+			content: '';
+			position: absolute;
+			inset: 0;
+			background: rgba(0,0,0,0.45);
+		}
+		.container { position: relative; z-index: 1; }
+
+		&__title {
+			font-size: clamp(40px, 6vw, 80px);
+			font-weight: 700 !important;
+			text-transform: uppercase;
+			color: $white !important;
+			line-height: 1;
+			margin-bottom: 12px;
+		}
+
+		&__sub {
+			font-size: 14px;
+			font-weight: 400 !important;
+			color: $white;
+			margin: 0;
+		}
+	}
+
+	.dp-bm-box {
+		background: $bm;
+		padding: 56px 48px;
+		text-align: center;
+
+		&__title {
+			font-size: clamp(32px, 4vw, 56px);
+			font-weight: 700 !important;
+			text-transform: uppercase;
+			color: $white !important;
+			margin-bottom: 8px;
+		}
+
+		&__subtitle {
+			font-size: 16px;
+			font-weight: 700 !important;
+			color: $white;
+			margin-bottom: 36px;
+		}
+
+		&__cta {
+			display: inline-block;
+			background: $white;
+			color: $black !important;
+			font-size: 11px;
+			font-weight: 700 !important;
+			letter-spacing: 0.12em;
+			text-transform: uppercase;
+			padding: 14px 40px;
+			text-decoration: none !important;
+			transition: opacity 0.2s;
+			&:hover { opacity: 0.85; }
+		}
+
+		&__script {
+			font-family: $hf;
+			font-size: 24px;
+			color: $white;
+			margin: 24px auto 0;
+			display: block;
+			font-weight: normal !important;
+		}
+	}
+
+} // fin .dp-page
